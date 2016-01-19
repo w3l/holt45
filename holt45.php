@@ -3,6 +3,9 @@
  * Check $_GET
  *
  * @example if(chk_get("s") == "a") instead of if(isset($_GET["s"]) && $_GET["s"] == "a")
+ *
+ * @param string $key Get-key...
+ * @return bool
  */
 function chk_get($key) {
     if (!isset($_GET[$key])) {
