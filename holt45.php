@@ -66,3 +66,26 @@ function timestamp_to_http_date($timestamp) {
 	if($timestamp == NULL) { return NULL; }
 	return gmdate("D, d M Y H:i:s T", strtotime($timestamp));
 }
+
+/**
+ * Get client ip-address
+ *
+ * @return string User ip-address
+ */
+function get_client_ip_address() {
+
+	if (getenv('HTTP_CLIENT_IP'))
+		return getenv('HTTP_CLIENT_IP');
+	else if(getenv('HTTP_X_FORWARDED_FOR'))
+		return getenv('HTTP_X_FORWARDED_FOR');
+	else if(getenv('HTTP_X_FORWARDED'))
+		return getenv('HTTP_X_FORWARDED');
+	else if(getenv('HTTP_FORWARDED_FOR'))
+		return getenv('HTTP_FORWARDED_FOR');
+	else if(getenv('HTTP_FORWARDED'))
+		return getenv('HTTP_FORWARDED');
+	else if(getenv('REMOTE_ADDR'))
+		return getenv('REMOTE_ADDR');
+	else
+		return '127.0.0.1'; // Unknown IP
+}
