@@ -56,3 +56,13 @@ function chk_post_all($keys) {
 	}
 	return $s;
 }
+
+/**
+ * Convert timestamp to HTTP-date (RFC2616)
+ *
+ * For use in "Last-Modified" headers.
+ */
+function timestamp_to_http_date($timestamp) {
+	if($timestamp == NULL) { return NULL; }
+	return gmdate("D, d M Y H:i:s T", strtotime($timestamp));
+}
