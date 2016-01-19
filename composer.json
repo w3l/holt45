@@ -1,0 +1,7 @@
+{
+    "name": "w3l/holt45",
+    "description": "Toolbox with some functions...",
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
