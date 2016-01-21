@@ -13,7 +13,7 @@ class holt45 {
 	 * @param string $key Get-key...
 	 * @return bool
 	 */
-	function chk_get($key) {
+	public static function chk_get($key) {
 		if (!isset($_GET[$key])) {
 			return false;
 		}
@@ -28,7 +28,7 @@ class holt45 {
 	 * @param string $key Post-key...
 	 * @return bool
 	 */
-	function chk_post($key) {
+	public static function chk_post($key) {
 		if (!isset($_POST[$key])) {
 			return false;
 		}
@@ -39,8 +39,11 @@ class holt45 {
 	 * Check multiple $_GET-keys
 	 *
 	 * @example if(chk_get_all(array("a","b"))) instead of if(!empty($_GET["a"]) && !empty($_GET["b"]))
+	 *
+	 * @param array $keys
+	 * @return bool
 	 */
-	function chk_get_all($keys) {
+	public static function chk_get_all($keys) {
 		$s = true;
 
 		foreach($keys AS $key) {
@@ -56,8 +59,11 @@ class holt45 {
 	 * Check multiple $_POST-keys
 	 *
 	 * @example if(chk_post_all(array("a","b"))) instead of if(!empty($_POST["a"]) && !empty($_POST["b"]))
+	 *
+	 * @param array $keys
+	 * @return bool
 	 */
-	function chk_post_all($keys) {
+	public static function chk_post_all($keys) {
 		$s = true;
 
 		foreach($keys AS $key) {
@@ -73,8 +79,11 @@ class holt45 {
 	 * Convert timestamp to HTTP-date (RFC2616)
 	 *
 	 * For use in "Last-Modified" headers.
+	 *
+	 * @param string $timestamp
+	 * @return string
 	 */
-	function timestamp_to_http_date($timestamp) {
+	public static function timestamp_to_http_date($timestamp) {
 		if($timestamp == NULL) { return NULL; }
 		return gmdate("D, d M Y H:i:s T", strtotime($timestamp));
 	}
@@ -84,7 +93,7 @@ class holt45 {
 	 *
 	 * @return string User ip-address
 	 */
-	function get_client_ip_address() {
+	public static function get_client_ip_address() {
 
 		if (getenv('HTTP_CLIENT_IP'))
 			return getenv('HTTP_CLIENT_IP');
@@ -116,7 +125,7 @@ class holt45 {
 	 * @param string $url Any somewhat valid url.
 	 * @return string[] "url" contains an auto-corrected url. "url_display" host.tld or subdomain.host.tld
 	 */
-	function url_parser($url) {
+	public static function url_parser($url) {
 		
 		// multiple /// messes up parse_url, replace 3 or more with 2
 		$url = preg_replace('/(\/{2,})/','//',$url);
@@ -177,5 +186,35 @@ class holt45 {
 
 		
 		return $url_array;
+	}
+	
+	/**
+	 * Generate a password-suggestion.
+	 *
+	 * @param int $length Length of password
+	 * @param bool $simple Limit character-set to first 33 characters.
+	 * @return string
+	 */
+	public static function generate_password($length = 8, $simple = false) {
+		$character_set = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ!#%+:=?@";
+		$character_set_lenght = (($simple) ? 33 : 64);
+		
+		$i = 0;
+		
+		while($i < 10) {
+		
+			$suggested_password = "";
+			
+			for($i = 0; $i < $length; $i++) {
+				$suggested_password .= $character_set[rand(0,($character_set_lenght-1))];
+			}
+
+			if(strlen(count_chars($suggested_password, 3)) > ($length-2)) {
+				break;
+			}
+		}
+		
+		return $suggested_password;
+		
 	}
 }
