@@ -1,7 +1,11 @@
 {
     "name": "w3l/holt45",
     "description": "Toolbox with some functions...",
+    "license": "Unlicense",
     "require": {
         "php": ">=5.3.0"
+    },
+    "autoload": {
+        "files": ["holt45.php"]
     }
 }

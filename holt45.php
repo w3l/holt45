@@ -18,6 +18,9 @@ function chk_get($key) {
  * Check $_POST
  *
  * @example if(chk_post("s") == "a") instead of if(isset($_POST["s"]) && $_POST["s"] == "a")
+ *
+ * @param string $key Post-key...
+ * @return bool
  */
 function chk_post($key) {
     if (!isset($_POST[$key])) {
