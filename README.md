@@ -12,10 +12,14 @@
 *holt45 - a toolbox with some functions..*
 
 ## functions
-* chk_get
-* chk_post
-* chk_get_all
-* chk_post_all
-* timestamp_to_http_date
-* get_client_ip_address
-* url_parser
+* holt45::chk_get()
+* holt45::chk_post()
+* holt45::chk_get_all()
+* holt45::chk_post_all()
+* holt45::timestamp_to_http_date()
+* holt45::get_client_ip_address()
+* holt45::url_parser()
+
+## constants
+* holt45::DATA_URI_TRANSPARENT_GIF
+* holt45::DATA_URI_TRANSPARENT_PNG
