@@ -20,6 +20,9 @@
 * holt45::get_client_ip_address()
 * holt45::url_parser()
 * holt45::generate_password()
+* holt45::textarea_encode()
+* holt45::textarea_decode()
+* holt45::time_elapsed()
 
 ## constants
 * holt45::DATA_URI_TRANSPARENT_GIF
