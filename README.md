@@ -19,6 +19,7 @@
 * holt45::timestamp_to_http_date()
 * holt45::get_client_ip_address()
 * holt45::url_parser()
+* holt45::generate_password()
 
 ## constants
 * holt45::DATA_URI_TRANSPARENT_GIF
