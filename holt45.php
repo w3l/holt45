@@ -1,9 +1,9 @@
 <?php
 class holt45 {
 	
-	const DATA_URI_TRANSPARENT_GIF = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-	const DATA_URI_TRANSPARENT_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=';
+	define('HOLT45_DIR', dirname(__FILE__) . '/holt45');
 	
+	require_once HOLT45_DIR . '/Constants.php';
 	
 	/**
 	 * Check $_GET
@@ -34,10 +34,14 @@ class holt45 {
 		}
 		return $_POST[$key];
 	}
+	
 	/**
 	 * Assign value from $_GET
 	 *
 	 * @example $var = assign_from_get("a") instead of $var = ((!empty($_GET["s"])) ? $_GET["s"] : "");
+	 *
+	 * @param string $key
+	 * @return string
 	 */
 	public static function assign_from_get($key) {
 		return ((!isset($_GET[$key])) ? "" : $_GET[$key]);
@@ -47,6 +51,9 @@ class holt45 {
 	 * Assign value from $_POST
 	 *
 	 * @example $var = assign_from_post("a") instead of $var = ((!empty($_POST["s"])) ? $_POST["s"] : "");
+	 *
+	 * @param string $key
+	 * @return string
 	 */
 	public static function assign_from_post($key) {
 		return ((!isset($_POST[$key])) ? "" : $_POST[$key]);
@@ -99,7 +106,7 @@ class holt45 {
 	 * @param string $content Session content
 	 * @param int $expires How many seconds before the session should expire.
 	 */
-	function session_set($name, $content, $expires = 86400) {
+	public static function session_set($name, $content, $expires = 86400) {
 		$_SESSION[$name] = (time() + $expires).'-'.$content;
 	}
 
@@ -109,7 +116,7 @@ class holt45 {
 	 * @param string $name Session name
 	 * @return bool Session status
 	 */
-	function session_isset($name) {
+	public static function session_isset($name) {
 		if(isset($_SESSION[$name])) {
 			$expires = current(explode("-",$_SESSION[$name]));
 			if(ctype_digit($expires) && $expires > time()) {
@@ -130,7 +137,7 @@ class holt45 {
 	 * @param string $name Session name
 	 * @return string Session content
 	 */
-	function session_read($name) {
+	public static function session_read($name) {
 		return substr(strstr($_SESSION[$name], '-'),1);
 	}
 
@@ -140,7 +147,7 @@ class holt45 {
 	 * @param string $name Session name
 	 * @return void
 	 */
-	function session_delete($name) {
+	public static function session_delete($name) {
 		unset($_SESSION[$name]);
 	}
 	
