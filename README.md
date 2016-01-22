@@ -38,6 +38,11 @@
 * holt45::generate_password()
 * holt45::textarea_encode()
 * holt45::textarea_decode()
+* holt45::obfuscate_string()
+* holt45::deobfuscate_string()
+* holt45::generate_pagination_range()
+* holt45::replace_string()
+* holt45::iso3166_to_name()
 
 ## constants
 * holt45::DATA_URI_TRANSPARENT_GIF
