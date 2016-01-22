@@ -126,19 +126,19 @@ trait Misc {
 			}
 		}
 
-		$url_array["url"] .= implode(".",$explodeHost);
-		$url_array["url_display"] = trim(implode(".",$explodeHost), '\/'); // Removes trailing slash
+		$urlArray["url"] .= implode(".",$explodeHost);
+		$urlArray["url_display"] = trim(implode(".",$explodeHost), '\/'); // Removes trailing slash
 		
-		if(!empty($parse_url["port"])) {
+		if(!empty($parseUrl["port"])) {
 			$urlArray["url"] .= ":".$parseUrl["port"];
 		}
-		if(!empty($parse_url["path"])) {
+		if(!empty($parseUrl["path"])) {
 			$urlArray["url"] .= $parseUrl["path"];
 		}
-		if(!empty($parse_url["query"])) {
+		if(!empty($parseUrl["query"])) {
 			$urlArray["url"] .= '?'.$parseUrl["query"];
 		}
-		if(!empty($parse_url["fragment"])) {
+		if(!empty($parseUrl["fragment"])) {
 			$urlArray["url"] .= '#'.$parseUrl["fragment"];
 		}
 
@@ -242,8 +242,8 @@ trait Misc {
 			
 		} elseif($selectedPage >= $totalPages-round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)) {
 			// first + $totalPages-5 - $totalPages
-			$array_data = array_slice($tempArrayRange, $totalPages-($numberOfResults-1));
-			$array_data[] = 1;
+			$arrayData = array_slice($tempArrayRange, $totalPages-($numberOfResults-1));
+			$arrayData[] = 1;
 		} else {
 			// first + $totalPages-2 - $totalPages+2 + last
 			$arrayData = array_slice($tempArrayRange, $selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)), ($numberOfResults-2));
