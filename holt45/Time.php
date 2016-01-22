@@ -10,7 +10,7 @@ trait Time {
 	 * @param string $timestamp
 	 * @return string
 	 */
-	public static function timestamp_to_http_date($timestamp) {
+	public static function timestampToHttpDate($timestamp) {
 		if($timestamp == NULL) { return NULL; }
 		return gmdate("D, d M Y H:i:s T", strtotime($timestamp));
 	}
@@ -22,7 +22,7 @@ trait Time {
 	 * @param int $limit Limit in seconds when to return nothing
 	 * @return string Formated time: "x unit(s)" or empty string
 	 */
-	public static function time_elapsed($timestamp) {
+	public static function timeElapsed($timestamp) {
 		$seconds = max((time() - strtotime($timestamp)),0);
 		
 		if($seconds < 60) {

@@ -2,7 +2,12 @@
 namespace w3l\holt45;
 	trait MiscData {
 
-	public static function get_countries_list() {
+	/**
+	 * List of 3166-1 alpha-2 codes
+	 *
+	 * @return array
+	 */
+	public static function getCountriesList() {
 		return array(
 		'AF' => 'AFGHANISTAN',
 		'AL' => 'ALBANIA',
