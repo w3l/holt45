@@ -14,6 +14,8 @@
 ## functions
 * holt45::chk_get()
 * holt45::chk_post()
+* holt45::assign_from_get()
+* holt45::assign_from_post()
 * holt45::chk_get_all()
 * holt45::chk_post_all()
 * holt45::timestamp_to_http_date()
