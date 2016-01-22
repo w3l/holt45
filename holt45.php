@@ -4,7 +4,7 @@ define('HOLT45_DIR', dirname(__FILE__) . '/holt45');
 require_once HOLT45_DIR . '/Constants.php';
 
 class holt45 {
-	use Constants;
+	use Holt45Constants;
 
 	
 	/**
