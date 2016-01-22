@@ -1,5 +1,5 @@
 <?php
-namespace w3l\holt45;
+namespace w3l\Holt45;
 	trait MiscData {
 
 	/**

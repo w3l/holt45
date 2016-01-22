@@ -149,14 +149,15 @@ trait Misc {
 	 * Generate a password-suggestion.
 	 *
 	 * @param int $length Length of password
-	 * @param bool $simple Limit character-set to first 33 characters.
+	 * @param string $password_type "simple" limit character-set to first 33 characters. "long" uses 64 characters.
 	 * @return string
 	 */
-	public static function generatePassword($length = 8, $simple = false) {
+	public static function generatePassword($length = 8, $password_type = "long") {
 		$character_set = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ!#%+:=?@";
-		$character_set_lenght = (($simple) ? 33 : 64);
+		$character_set_lenght = (($password_type == "simple") ? 33 : 64);
 		
 		$counter = 0;
+		$suggested_password = "";
 		
 		while($counter < 10) {
 		
@@ -183,7 +184,7 @@ trait Misc {
 	 * @param string $input The text that should be obfuscated
 	 * @return string Obfuscated string
 	 */
-	function obfuscateString($input) {
+	public static function obfuscateString($input) {
 		return bin2hex(base64_encode(strrev($input)));
 	}
 
@@ -193,7 +194,7 @@ trait Misc {
 	 * @param string $input Obfuscated string
 	 * @return string Deobfuscated string
 	 */
-	function deobfuscateString($input) {
+	public static function deobfuscateString($input) {
 		return strrev(base64_decode(hex2bin($input)));
 	}
 	
