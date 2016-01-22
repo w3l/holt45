@@ -1,7 +1,14 @@
 {
     "name": "w3l/holt45",
-    "description": "Toolbox with some functions...",
+    "description": "A small library with some really basic functions...",
     "license": "Unlicense",
+    "keywords": [
+        "noob",
+        "time",
+        "session",
+        "url",
+		"password"
+    ],
     "require": {
         "php": ">=5.3.0"
     },

@@ -9,13 +9,24 @@
 [![Codacy Badge](https://img.shields.io/codacy/a3955affc5dc4e57b48ae2a6a8eb5b2f.svg?label=codacy)](https://www.codacy.com/app/support_7/holt45)
 [![Badges](https://img.shields.io/badge/badges-shields.io-ff69b4.svg)](http://shields.io/)
 
-*holt45 - a toolbox with some functions..*
+*holt45 - a small library with some really basic functions...*
 
 ## functions
+### $_GET/$_POST
 * holt45::chk_get()
 * holt45::chk_post()
+* holt45::assign_from_get()
+* holt45::assign_from_post()
 * holt45::chk_get_all()
 * holt45::chk_post_all()
+
+### Sessions
+* holt45::session_set()
+* holt45::session_isset()
+* holt45::session_read()
+* holt45::session_delete()
+
+### Misc
 * holt45::timestamp_to_http_date()
 * holt45::get_client_ip_address()
 * holt45::url_parser()
@@ -23,6 +34,7 @@
 * holt45::textarea_encode()
 * holt45::textarea_decode()
 * holt45::time_elapsed()
+
 
 ## constants
 * holt45::DATA_URI_TRANSPARENT_GIF
