@@ -1,5 +1,5 @@
 <?php
-namespace Holt45;
+namespace w3l\Holt45;
 trait Time {
 	
 	/**
@@ -16,10 +16,11 @@ trait Time {
 	}
 	
 	/**
-	 * Convert timestamp to "x unit"
+	 * Convert timestamp to x unit(plural), like "6 minutes" or "1 day".
 	 *
 	 * @param string $timestamp
-	 * @return string
+	 * @param int $limit Limit in seconds when to return nothing
+	 * @return string Formated time: "x unit(s)" or empty string
 	 */
 	public static function time_elapsed($timestamp) {
 		$seconds = max((time() - strtotime($timestamp)),0);
