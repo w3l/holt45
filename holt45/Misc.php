@@ -1,6 +1,40 @@
 <?php
 namespace w3l\Holt45;
 trait Misc {
+	
+	/**
+	 * Convert ISO 3166-1 alpha-2 code to (English) country name.
+	 *
+	 * @link https://gist.github.com/IngmarBoddington/5909709 Source
+	 *
+	 * @param string $key ISO 3166-1 alpha-2 code
+	 * @return string Country name OR $key if no match.
+	 */
+	function iso3166_to_name($key) {
+	
+		$countries = self::get_countries_list();
+
+		if (array_key_exists($key, $countries)) {
+			return $countries[$key];
+		} else {
+			return $key;
+		}
+
+	}
+		
+	/**
+	* To replace "Hallo [@var] world" with $value.
+	*
+	* @example replace_string($string, array("val1" => "foo", "val2" => "bar"))
+	*/
+	function replace_string($lang_string, $dynamic_content = array()) {
+
+		foreach ($dynamic_content as $k => $v) {
+			$lang_string = str_replace("[@".$k."]", $v, $lang_string);
+		}
+		return $lang_string;
+	}
+	
 	/**
 	 * Get client ip-address
 	 *
@@ -146,6 +180,26 @@ trait Misc {
 	}
 	
 	/**
+	 * Obfuscate string (url-safe and somewhat hard to guess).
+	 *
+	 * @param string $input The text that should be obfuscated
+	 * @return string Obfuscated string
+	 */
+	function obfuscate_string($input) {
+		return bin2hex(base64_encode(strrev($input)));
+	}
+
+	/**
+	 * Deobfuscate string
+	 *
+	 * @param string $input Obfuscated string
+	 * @return string Deobfuscated string
+	 */
+	function deobfuscate_string($input) {
+		return strrev(base64_decode(hex2bin($input)));
+	}
+	
+	/**
 	 * Convert <textarea> to [textarea].
 	 *
 	 * @param string $html
@@ -164,5 +218,46 @@ trait Misc {
 	public static function textarea_decode($html) {
 		return preg_replace("/\[textarea(.*?)\](.*?)\[\/textarea\]/is", "<textarea$1>$2</textarea>", $html);
 	}
+	
+	/**
+	 * Create range for pagination
+	 *
+	 * @param int $total_pages
+	 * @param int $selected_page
+	 * @param int $number_of_results
+	 * @return array Array with all page-numbers limited by $number_of_results
+	 */
+	public static function generate_pagination_range($total_pages,$selected_page = 1,$number_of_results = 7) {
+
+		// Get the numbers
+		$temp_array_range = range(1, $total_pages);
+		
+		if($total_pages <= $number_of_results) {
+			// all
+			$array_data = $temp_array_range;
+		} elseif($selected_page <= (round(($number_of_results / 2), 0, PHP_ROUND_HALF_UP))) {
+			// 1-6+last
+			$array_data = array_slice($temp_array_range, 0, ($number_of_results-1));
+			$array_data[] = $total_pages;
+			
+		} elseif($selected_page >= $total_pages-round(($number_of_results / 2), 0, PHP_ROUND_HALF_DOWN)) {
+			// first + $total_pages-5 - $total_pages
+			$array_data = array_slice($temp_array_range, $total_pages-($number_of_results-1));
+			$array_data[] = 1;
+			//$array_data[] = 0; // Not sure what it did there?
+		} else {
+			// first + $total_pages-2 - $total_pages+2 + last
+			$array_data = array_slice($temp_array_range, $selected_page-(round(($number_of_results / 2), 0, PHP_ROUND_HALF_DOWN)), ($number_of_results-2));
+			$array_data[] = 1;
+			$array_data[] = $total_pages;
+			
+		}
+		
+		sort($array_data);
+		
+		return $array_data;
+		
+	}
+
 	
 }
