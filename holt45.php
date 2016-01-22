@@ -16,3 +16,5 @@ require_once dirname(__FILE__) . '/holt45/Misc.data.inc';
 require_once dirname(__FILE__) . '/holt45/Misc.php';
 
 require_once dirname(__FILE__) . '/holt45/Holt45.php';
+
+class nuff{}
