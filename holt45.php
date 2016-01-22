@@ -1,9 +1,11 @@
 <?php
+define('HOLT45_DIR', dirname(__FILE__) . '/holt45');
+
+require_once HOLT45_DIR . '/Constants.php';
+
 class holt45 {
-	
-	define('HOLT45_DIR', dirname(__FILE__) . '/holt45');
-	
-	require_once HOLT45_DIR . '/Constants.php';
+	use Constants;
+
 	
 	/**
 	 * Check $_GET
