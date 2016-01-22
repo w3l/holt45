@@ -10,24 +10,22 @@ trait Misc {
 	 * @param string $key ISO 3166-1 alpha-2 code
 	 * @return string Country name OR $key if no match.
 	 */
-	function iso3166_to_name($key) {
+	public static function iso3166ToName($key) {
 	
-		$countries = self::get_countries_list();
+		$countries = self::getCountriesList();
 
-		if (array_key_exists($key, $countries)) {
-			return $countries[$key];
-		} else {
-			return $key;
-		}
-
+		return ((array_key_exists($key, $countries)) ? $countries[$key] : $key);
 	}
 		
 	/**
 	* To replace "Hallo [@var] world" with $value.
 	*
 	* @example replace_string($string, array("val1" => "foo", "val2" => "bar"))
+	*
+	* @param string $lang_string String containing placeholder.
+	* @return string String with placeholder replaced.
 	*/
-	function replace_string($lang_string, $dynamic_content = array()) {
+	public static function replaceString($lang_string, $dynamic_content = array()) {
 
 		foreach ($dynamic_content as $k => $v) {
 			$lang_string = str_replace("[@".$k."]", $v, $lang_string);
@@ -40,7 +38,7 @@ trait Misc {
 	 *
 	 * @return string User ip-address
 	 */
-	public static function get_client_ip_address() {
+	public static function getClientIpAddress() {
 
 		if (getenv('HTTP_CLIENT_IP'))
 			return getenv('HTTP_CLIENT_IP');
@@ -65,7 +63,7 @@ trait Misc {
 	 * @return array
 	 */
 	
-	private static function auto_correct_parse_url($url) {
+	private static function autoCorrectParseUrl($url) {
 		// multiple /// messes up parse_url, replace 3 or more with 2
 		$url = preg_replace('/(\/{2,})/','//',$url);
 		
@@ -96,9 +94,9 @@ trait Misc {
 	 * @param string $url Any somewhat valid url.
 	 * @return string[] "url" contains an auto-corrected url. "url_display" host.tld or subdomain.host.tld
 	 */
-	public static function url_parser($url) {
+	public static function urlParser($url) {
 		
-		$parse_url = self::auto_correct_parse_url($url);
+		$parse_url = self::autoCorrectParseUrl($url);
 
 		$url_array = array("url" => "", "url_display" => "");
 		
@@ -154,7 +152,7 @@ trait Misc {
 	 * @param bool $simple Limit character-set to first 33 characters.
 	 * @return string
 	 */
-	public static function generate_password($length = 8, $simple = false) {
+	public static function generatePassword($length = 8, $simple = false) {
 		$character_set = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ!#%+:=?@";
 		$character_set_lenght = (($simple) ? 33 : 64);
 		
@@ -185,7 +183,7 @@ trait Misc {
 	 * @param string $input The text that should be obfuscated
 	 * @return string Obfuscated string
 	 */
-	function obfuscate_string($input) {
+	function obfuscateString($input) {
 		return bin2hex(base64_encode(strrev($input)));
 	}
 
@@ -195,7 +193,7 @@ trait Misc {
 	 * @param string $input Obfuscated string
 	 * @return string Deobfuscated string
 	 */
-	function deobfuscate_string($input) {
+	function deobfuscateString($input) {
 		return strrev(base64_decode(hex2bin($input)));
 	}
 	
@@ -205,7 +203,7 @@ trait Misc {
 	 * @param string $html
 	 * @return string
 	 */
-	public static function textarea_encode($html) {
+	public static function textareaEncode($html) {
 		return preg_replace("/<textarea(.*?)>(.*?)<\/textarea>/is", "[textarea$1]$2[/textarea]", $html);
 	}
 	
@@ -215,7 +213,7 @@ trait Misc {
 	 * @param string $html
 	 * @return string
 	 */
-	public static function textarea_decode($html) {
+	public static function textareaDecode($html) {
 		return preg_replace("/\[textarea(.*?)\](.*?)\[\/textarea\]/is", "<textarea$1>$2</textarea>", $html);
 	}
 	
@@ -227,7 +225,7 @@ trait Misc {
 	 * @param int $number_of_results
 	 * @return array Array with all page-numbers limited by $number_of_results
 	 */
-	public static function generate_pagination_range($total_pages,$selected_page = 1,$number_of_results = 7) {
+	public static function generatePaginationRange($total_pages,$selected_page = 1,$number_of_results = 7) {
 
 		// Get the numbers
 		$temp_array_range = range(1, $total_pages);
@@ -244,7 +242,6 @@ trait Misc {
 			// first + $total_pages-5 - $total_pages
 			$array_data = array_slice($temp_array_range, $total_pages-($number_of_results-1));
 			$array_data[] = 1;
-			//$array_data[] = 0; // Not sure what it did there?
 		} else {
 			// first + $total_pages-2 - $total_pages+2 + last
 			$array_data = array_slice($temp_array_range, $selected_page-(round(($number_of_results / 2), 0, PHP_ROUND_HALF_DOWN)), ($number_of_results-2));

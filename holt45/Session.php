@@ -9,7 +9,7 @@ trait Session {
 	 * @param string $content Session content
 	 * @param int $expires How many seconds before the session should expire.
 	 */
-	public static function session_set($name, $content, $expires = 86400) {
+	public static function sessionSet($name, $content, $expires = 86400) {
 		$_SESSION[$name] = (time() + $expires).'-'.$content;
 	}
 
@@ -19,7 +19,7 @@ trait Session {
 	 * @param string $name Session name
 	 * @return bool Session status
 	 */
-	public static function session_isset($name) {
+	public static function sessionIsset($name) {
 		if(isset($_SESSION[$name])) {
 			$expires = current(explode("-",$_SESSION[$name]));
 			if(ctype_digit($expires) && $expires > time()) {
@@ -40,7 +40,7 @@ trait Session {
 	 * @param string $name Session name
 	 * @return string Session content
 	 */
-	public static function session_read($name) {
+	public static function sessionRead($name) {
 		return substr(strstr($_SESSION[$name], '-'),1);
 	}
 
@@ -50,7 +50,7 @@ trait Session {
 	 * @param string $name Session name
 	 * @return void
 	 */
-	public static function session_delete($name) {
+	public static function sessionDelete($name) {
 		unset($_SESSION[$name]);
 	}
 

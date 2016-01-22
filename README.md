@@ -13,36 +13,36 @@
 
 ## functions
 ### $_GET
-* holt45::chk_get()
-* holt45::assign_from_get()
-* holt45::chk_get_all()
+* holt45::chkGet()
+* holt45::assignFromGet()
+* holt45::chkGetAll()
 
 ### $_POST
-* holt45::chk_post()
-* holt45::assign_from_post()
-* holt45::chk_post_all()
+* holt45::chkPost()
+* holt45::assignFromPost()
+* holt45::chkPostAll()
 
 ### Sessions
-* holt45::session_set()
-* holt45::session_isset()
-* holt45::session_read()
-* holt45::session_delete()
+* holt45::sessionSet()
+* holt45::sessionIsset()
+* holt45::sessionRead()
+* holt45::sessionDelete()
 
 ### Time
-* holt45::timestamp_to_http_date()
-* holt45::time_elapsed()
+* holt45::timestampToHttpDate()
+* holt45::timeElapsed()
 
 ### Misc
-* holt45::get_client_ip_address()
-* holt45::url_parser()
-* holt45::generate_password()
-* holt45::textarea_encode()
-* holt45::textarea_decode()
-* holt45::obfuscate_string()
-* holt45::deobfuscate_string()
-* holt45::generate_pagination_range()
-* holt45::replace_string()
-* holt45::iso3166_to_name()
+* holt45::getClientIpAddress()
+* holt45::urlParser()
+* holt45::generatePassword()
+* holt45::textareaEncode()
+* holt45::textareaDecode()
+* holt45::obfuscateString()
+* holt45::deobfuscateString()
+* holt45::generatePaginationRange()
+* holt45::replaceString()
+* holt45::iso3166ToName()
 
 ## constants
 * holt45::DATA_URI_TRANSPARENT_GIF

@@ -10,7 +10,7 @@ trait Post {
 	 * @param string $key Post-key.
 	 * @return bool|string
 	 */
-	public static function chk_post($key) {
+	public static function chkPost($key) {
 		if (!isset($_POST[$key])) {
 			return false;
 		}
@@ -25,7 +25,7 @@ trait Post {
 	 * @param string $key Post-key.
 	 * @return string
 	 */
-	public static function assign_from_post($key) {
+	public static function assignFromPost($key) {
 		return ((!isset($_POST[$key])) ? "" : $_POST[$key]);
 	}
 
@@ -37,7 +37,7 @@ trait Post {
 	 * @param array $keys Post-keys.
 	 * @return bool
 	 */
-	public static function chk_post_all($keys) {
+	public static function chkPostAll($keys) {
 		$keys_set = true;
 
 		foreach($keys AS $key) {

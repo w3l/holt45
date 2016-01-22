@@ -10,7 +10,7 @@ trait Get {
 	 * @param string $key Get-key.
 	 * @return bool|string
 	 */
-	public static function chk_get($key) {
+	public static function chkGet($key) {
 		if (!isset($_GET[$key])) {
 			return false;
 		}
@@ -25,7 +25,7 @@ trait Get {
 	 * @param string $key Get-key.
 	 * @return string
 	 */
-	public static function assign_from_get($key) {
+	public static function assignFromGet($key) {
 		return ((!isset($_GET[$key])) ? "" : $_GET[$key]);
 	}
 	
@@ -37,7 +37,7 @@ trait Get {
 	 * @param array $keys Get-keys.
 	 * @return bool
 	 */
-	public static function chk_get_all($keys) {
+	public static function chkGetAll($keys) {
 		$keys_set = true;
 
 		foreach($keys AS $key) {
