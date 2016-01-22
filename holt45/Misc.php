@@ -1,5 +1,5 @@
 <?php
-namespace Holt45;
+namespace w3l\Holt45;
 trait Misc {
 	/**
 	 * Get client ip-address
@@ -25,6 +25,30 @@ trait Misc {
 	}
 
 	/**
+	 * Tries to auto-correct parse_url()-output.
+	 *
+	 * @param string $url
+	 * @return array
+	 */
+	
+	private static function auto_correct_parse_url($url) {
+		// multiple /// messes up parse_url, replace 3 or more with 2
+		$url = preg_replace('/(\/{2,})/','//',$url);
+		
+		$parse_url = parse_url($url);
+		
+		if(empty($parse_url["scheme"])) {
+			$parse_url["scheme"] = "http";
+		}
+		if(empty($parse_url["host"]) && !empty($parse_url["path"])) {
+			// Strip slash from the beginning of path
+			$parse_url["host"] = ltrim($parse_url["path"], '\/');
+			$parse_url["path"] = "";
+		}
+		return $parse_url;
+	}
+
+	/**
 	 * parse url, try to correct errors and return valid url + display-url.
 	 *
 	 * @example http:/wwww.example.com/lorum.html => http://www.example.com/lorum.html
@@ -40,19 +64,7 @@ trait Misc {
 	 */
 	public static function url_parser($url) {
 		
-		// multiple /// messes up parse_url, replace 3 or more with 2
-		$url = preg_replace('/(\/{2,})/','//',$url);
-		
-		$parse_url = parse_url($url);
-		
-		if(empty($parse_url["scheme"])) {
-			$parse_url["scheme"] = "http";
-		}
-		if(empty($parse_url["host"]) && !empty($parse_url["path"])) {
-			// Strip slash from the beginning of path
-			$parse_url["host"] = ltrim($parse_url["path"], '\/');
-			$parse_url["path"] = "";
-		}
+		$parse_url = self::auto_correct_parse_url($url);
 
 		$url_array = array("url" => "", "url_display" => "");
 		

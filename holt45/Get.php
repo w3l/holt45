@@ -1,5 +1,5 @@
 <?php
-namespace Holt45;
+namespace w3l\Holt45;
 trait Get {
 	
 	/**
