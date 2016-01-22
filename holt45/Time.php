@@ -8,7 +8,7 @@ trait Time {
 	 * For use in "Last-Modified" headers.
 	 *
 	 * @param string $timestamp
-	 * @return string
+	 * @return string|null
 	 */
 	public static function timestampToHttpDate($timestamp) {
 		if($timestamp == NULL) { return NULL; }
@@ -19,7 +19,6 @@ trait Time {
 	 * Convert timestamp to x unit(plural), like "6 minutes" or "1 day".
 	 *
 	 * @param string $timestamp
-	 * @param int $limit Limit in seconds when to return nothing
 	 * @return string Formated time: "x unit(s)" or empty string
 	 */
 	public static function timeElapsed($timestamp) {

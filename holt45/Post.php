@@ -38,14 +38,14 @@ trait Post {
 	 * @return bool
 	 */
 	public static function chkPostAll($keys) {
-		$keys_set = true;
+		$keysSet = true;
 
 		foreach($keys AS $key) {
 		
 			if (empty($_POST[$key])) {
-				$keys_set = false;
+				$keysSet = false;
 			}
 		}
-		return $keys_set;
+		return $keysSet;
 	}
 }
