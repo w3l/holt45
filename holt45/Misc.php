@@ -22,15 +22,16 @@ trait Misc {
 	*
 	* @example replace_string($string, array("val1" => "foo", "val2" => "bar"))
 	*
-	* @param string $lang_string String containing placeholder.
+	* @param string $langString String containing placeholder.
+	* @param array $dynamicContent key->value array.
 	* @return string String with placeholder replaced.
 	*/
-	public static function replaceString($lang_string, $dynamic_content = array()) {
+	public static function replaceString($langString, $dynamicContent = array()) {
 
-		foreach ($dynamic_content as $k => $v) {
-			$lang_string = str_replace("[@".$k."]", $v, $lang_string);
+		foreach ($dynamicContent as $k => $v) {
+			$langString = str_replace("[@".$k."]", $v, $langString);
 		}
-		return $lang_string;
+		return $langString;
 	}
 	
 	/**
@@ -52,7 +53,7 @@ trait Misc {
 			return getenv('HTTP_FORWARDED');
 		else if(getenv('REMOTE_ADDR'))
 			return getenv('REMOTE_ADDR');
-		else
+
 			return '127.0.0.1'; // Unknown IP
 	}
 
@@ -67,17 +68,17 @@ trait Misc {
 		// multiple /// messes up parse_url, replace 3 or more with 2
 		$url = preg_replace('/(\/{2,})/','//',$url);
 		
-		$parse_url = parse_url($url);
+		$parseUrl = parse_url($url);
 		
-		if(empty($parse_url["scheme"])) {
-			$parse_url["scheme"] = "http";
+		if(empty($parseUrl["scheme"])) {
+			$parseUrl["scheme"] = "http";
 		}
-		if(empty($parse_url["host"]) && !empty($parse_url["path"])) {
+		if(empty($parseUrl["host"]) && !empty($parseUrl["path"])) {
 			// Strip slash from the beginning of path
-			$parse_url["host"] = ltrim($parse_url["path"], '\/');
-			$parse_url["path"] = "";
+			$parseUrl["host"] = ltrim($parseUrl["path"], '\/');
+			$parseUrl["path"] = "";
 		}
-		return $parse_url;
+		return $parseUrl;
 	}
 
 	/**
@@ -96,85 +97,85 @@ trait Misc {
 	 */
 	public static function urlParser($url) {
 		
-		$parse_url = self::autoCorrectParseUrl($url);
+		$parseUrl = self::autoCorrectParseUrl($url);
 
-		$url_array = array("url" => "", "url_display" => "");
+		$urlArray = array("url" => "", "url_display" => "");
 		
 		// Check if scheme is correct
-		if(!in_array($parse_url["scheme"], array("http", "https", "gopher"))) {
-			$url_array["url"] .= 'http'.'://';
+		if(!in_array($parseUrl["scheme"], array("http", "https", "gopher"))) {
+			$urlArray["url"] .= 'http'.'://';
 		} else {
-			$url_array["url"] .= $parse_url["scheme"].'://';
+			$urlArray["url"] .= $parseUrl["scheme"].'://';
 		}
 		
 		// Check if the right amount of "www" is set.
-		$explode_host = explode(".", $parse_url["host"]);
+		$explodeHost = explode(".", $parseUrl["host"]);
 		
 		// Remove empty entries
-		$explode_host = array_filter($explode_host);
+		$explodeHost = array_filter($explodeHost);
 		// And reassign indexes
-		$explode_host = array_values($explode_host);
+		$explodeHost = array_values($explodeHost);
 		
 		// Contains subdomain
-		if(count($explode_host) > 2) {
+		if(count($explodeHost) > 2) {
 			// Check if subdomain only contains the letter w(then not any other subdomain).
-			if(substr_count($explode_host[0], 'w') == strlen($explode_host[0])) {
+			if(substr_count($explodeHost[0], 'w') == strlen($explodeHost[0])) {
 				// Replace with "www" to avoid "ww" or "wwww", etc.
-				$explode_host[0] = "www";
+				$explodeHost[0] = "www";
 				
 			}
 		}
 
-		$url_array["url"] .= implode(".",$explode_host);
-		$url_array["url_display"] = trim(implode(".",$explode_host), '\/'); // Removes trailing slash
+		$url_array["url"] .= implode(".",$explodeHost);
+		$url_array["url_display"] = trim(implode(".",$explodeHost), '\/'); // Removes trailing slash
 		
 		if(!empty($parse_url["port"])) {
-			$url_array["url"] .= ":".$parse_url["port"];
+			$urlArray["url"] .= ":".$parseUrl["port"];
 		}
 		if(!empty($parse_url["path"])) {
-			$url_array["url"] .= $parse_url["path"];
+			$urlArray["url"] .= $parseUrl["path"];
 		}
 		if(!empty($parse_url["query"])) {
-			$url_array["url"] .= '?'.$parse_url["query"];
+			$urlArray["url"] .= '?'.$parseUrl["query"];
 		}
 		if(!empty($parse_url["fragment"])) {
-			$url_array["url"] .= '#'.$parse_url["fragment"];
+			$urlArray["url"] .= '#'.$parseUrl["fragment"];
 		}
 
 		
-		return $url_array;
+		return $urlArray;
 	}
 	
 	/**
 	 * Generate a password-suggestion.
 	 *
 	 * @param int $length Length of password
-	 * @param string $password_type "simple" limit character-set to first 33 characters. "long" uses 64 characters.
+	 * @param string $passwordType "simple" limit character-set to first 33 characters. "long" uses 64 characters.
 	 * @return string
 	 */
-	public static function generatePassword($length = 8, $password_type = "long") {
-		$character_set = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ!#%+:=?@";
-		$character_set_lenght = (($password_type == "simple") ? 33 : 64);
+	public static function generatePassword($length = 8, $passwordType = "long") {
+		$characterSet = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ!#%+:=?@";
+		$characterSetLenght = (($passwordType == "simple") ? 33 : 64);
 		
 		$counter = 0;
-		$suggested_password = "";
+		$suggestedPassword = "";
 		
 		while($counter < 10) {
 		
-			$suggested_password = "";
+			$suggestedPassword = "";
 			
 			for($i = 0; $i < $length; $i++) {
-				$suggested_password .= $character_set[rand(0,($character_set_lenght-1))];
+				$suggestedPassword .= $characterSet[rand(0,($characterSetLenght-1))];
 			}
 
-			if(strlen(count_chars($suggested_password, 3)) > ($length-2)) {
+			if(strlen(count_chars($suggestedPassword, 3)) > ($length-2)) {
 				break;
 			}
 			
 			$counter++;
 		}
 		
-		return $suggested_password;
+		return $suggestedPassword;
 		
 	}
 	
@@ -221,39 +222,39 @@ trait Misc {
 	/**
 	 * Create range for pagination
 	 *
-	 * @param int $total_pages
-	 * @param int $selected_page
-	 * @param int $number_of_results
+	 * @param int $totalPages
+	 * @param int $selectedPage
+	 * @param int $numberOfResults
 	 * @return array Array with all page-numbers limited by $number_of_results
 	 */
-	public static function generatePaginationRange($total_pages,$selected_page = 1,$number_of_results = 7) {
+	public static function generatePaginationRange($totalPages, $selectedPage = 1, $numberOfResults = 7) {
 
 		// Get the numbers
-		$temp_array_range = range(1, $total_pages);
+		$tempArrayRange = range(1, $totalPages);
 		
-		if($total_pages <= $number_of_results) {
+		if($totalPages <= $numberOfResults) {
 			// all
-			$array_data = $temp_array_range;
-		} elseif($selected_page <= (round(($number_of_results / 2), 0, PHP_ROUND_HALF_UP))) {
+			$arrayData = $tempArrayRange;
+		} elseif($selectedPage <= (round(($numberOfResults / 2), 0, PHP_ROUND_HALF_UP))) {
 			// 1-6+last
-			$array_data = array_slice($temp_array_range, 0, ($number_of_results-1));
-			$array_data[] = $total_pages;
+			$arrayData = array_slice($tempArrayRange, 0, ($numberOfResults-1));
+			$arrayData[] = $totalPages;
 			
-		} elseif($selected_page >= $total_pages-round(($number_of_results / 2), 0, PHP_ROUND_HALF_DOWN)) {
-			// first + $total_pages-5 - $total_pages
-			$array_data = array_slice($temp_array_range, $total_pages-($number_of_results-1));
+		} elseif($selectedPage >= $totalPages-round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)) {
+			// first + $totalPages-5 - $totalPages
+			$array_data = array_slice($tempArrayRange, $totalPages-($numberOfResults-1));
 			$array_data[] = 1;
 		} else {
-			// first + $total_pages-2 - $total_pages+2 + last
-			$array_data = array_slice($temp_array_range, $selected_page-(round(($number_of_results / 2), 0, PHP_ROUND_HALF_DOWN)), ($number_of_results-2));
-			$array_data[] = 1;
-			$array_data[] = $total_pages;
+			// first + $totalPages-2 - $totalPages+2 + last
+			$arrayData = array_slice($tempArrayRange, $selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)), ($numberOfResults-2));
+			$arrayData[] = 1;
+			$arrayData[] = $totalPages;
 			
 		}
 		
-		sort($array_data);
+		sort($arrayData);
 		
-		return $array_data;
+		return $arrayData;
 		
 	}
 
