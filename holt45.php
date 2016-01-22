@@ -1,11 +1,13 @@
 <?php
 define('HOLT45_DIR', dirname(__FILE__) . '/holt45');
 
-require_once HOLT45_DIR . '/Constants.php';
+require_once HOLT45_DIR . '/Session.php';
 
 class holt45 {
-	use \Holt45\Constants;
+	use \Holt45\Session;
 
+	const DATA_URI_TRANSPARENT_GIF = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+	const DATA_URI_TRANSPARENT_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=';
 	
 	/**
 	 * Check $_GET
@@ -101,58 +103,7 @@ class holt45 {
 		return $s;
 	}
 
-	/**
-	 * Handle sessions - set session
-	 *
-	 * @param string $name Session name
-	 * @param string $content Session content
-	 * @param int $expires How many seconds before the session should expire.
-	 */
-	public static function session_set($name, $content, $expires = 86400) {
-		$_SESSION[$name] = (time() + $expires).'-'.$content;
-	}
 
-	/**
-	 * Handle sessions - check if session is set and not expired.
-	 *
-	 * @param string $name Session name
-	 * @return bool Session status
-	 */
-	public static function session_isset($name) {
-		if(isset($_SESSION[$name])) {
-			$expires = current(explode("-",$_SESSION[$name]));
-			if(ctype_digit($expires) && $expires > time()) {
-				return true;
-				
-			} else {
-				unset($_SESSION[$name]);
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Handle sessions - Get session content
-	 *
-	 * @param string $name Session name
-	 * @return string Session content
-	 */
-	public static function session_read($name) {
-		return substr(strstr($_SESSION[$name], '-'),1);
-	}
-
-	/**
-	 * Handle sessions - Delete session
-	 *
-	 * @param string $name Session name
-	 * @return void
-	 */
-	public static function session_delete($name) {
-		unset($_SESSION[$name]);
-	}
-	
 	/**
 	 * Convert timestamp to HTTP-date (RFC2616)
 	 *
