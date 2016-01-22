@@ -93,6 +93,58 @@ class holt45 {
 	}
 
 	/**
+	 * Handle sessions - set session
+	 *
+	 * @param string $name Session name
+	 * @param string $content Session content
+	 * @param int $expires How many seconds before the session should expire.
+	 */
+	function session_set($name, $content, $expires = 86400) {
+		$_SESSION[$name] = (time() + $expires).'-'.$content;
+	}
+
+	/**
+	 * Handle sessions - check if session is set and not expired.
+	 *
+	 * @param string $name Session name
+	 * @return bool Session status
+	 */
+	function session_isset($name) {
+		if(isset($_SESSION[$name])) {
+			$expires = current(explode("-",$_SESSION[$name]));
+			if(ctype_digit($expires) && $expires > time()) {
+				return true;
+				
+			} else {
+				unset($_SESSION[$name]);
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Handle sessions - Get session content
+	 *
+	 * @param string $name Session name
+	 * @return string Session content
+	 */
+	function session_read($name) {
+		return substr(strstr($_SESSION[$name], '-'),1);
+	}
+
+	/**
+	 * Handle sessions - Delete session
+	 *
+	 * @param string $name Session name
+	 * @return void
+	 */
+	function session_delete($name) {
+		unset($_SESSION[$name]);
+	}
+	
+	/**
 	 * Convert timestamp to HTTP-date (RFC2616)
 	 *
 	 * For use in "Last-Modified" headers.
