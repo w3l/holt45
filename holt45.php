@@ -34,6 +34,23 @@ class holt45 {
 		}
 		return $_POST[$key];
 	}
+	/**
+	 * Assign value from $_GET
+	 *
+	 * @example $var = assign_from_get("a") instead of $var = ((!empty($_GET["s"])) ? $_GET["s"] : "");
+	 */
+	public static function assign_from_get($key) {
+		return ((!isset($_GET[$key])) ? "" : $_GET[$key]);
+	}
+
+	/**
+	 * Assign value from $_POST
+	 *
+	 * @example $var = assign_from_post("a") instead of $var = ((!empty($_POST["s"])) ? $_POST["s"] : "");
+	 */
+	public static function assign_from_post($key) {
+		return ((!isset($_POST[$key])) ? "" : $_POST[$key]);
+	}
 
 	/**
 	 * Check multiple $_GET-keys
