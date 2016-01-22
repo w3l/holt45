@@ -7,8 +7,8 @@ trait Post {
 	 *
 	 * @example if(chk_post("s") == "a") instead of if(isset($_POST["s"]) && $_POST["s"] == "a")
 	 *
-	 * @param string $key Post-key...
-	 * @return bool
+	 * @param string $key Post-key.
+	 * @return bool|string
 	 */
 	public static function chk_post($key) {
 		if (!isset($_POST[$key])) {
@@ -22,7 +22,7 @@ trait Post {
 	 *
 	 * @example $var = assign_from_post("a") instead of $var = ((!empty($_POST["s"])) ? $_POST["s"] : "");
 	 *
-	 * @param string $key
+	 * @param string $key Post-key.
 	 * @return string
 	 */
 	public static function assign_from_post($key) {
@@ -34,18 +34,18 @@ trait Post {
 	 *
 	 * @example if(chk_post_all(array("a","b"))) instead of if(!empty($_POST["a"]) && !empty($_POST["b"]))
 	 *
-	 * @param array $keys
+	 * @param array $keys Post-keys.
 	 * @return bool
 	 */
 	public static function chk_post_all($keys) {
-		$s = true;
+		$keys_set = true;
 
 		foreach($keys AS $key) {
 		
 			if (empty($_POST[$key])) {
-				$s = false;
+				$keys_set = false;
 			}
 		}
-		return $s;
+		return $keys_set;
 	}
 }

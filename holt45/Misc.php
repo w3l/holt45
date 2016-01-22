@@ -112,9 +112,9 @@ trait Misc {
 		$character_set = "23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPRSTUVWXYZ!#%+:=?@";
 		$character_set_lenght = (($simple) ? 33 : 64);
 		
-		$i = 0;
+		$counter = 0;
 		
-		while($i < 10) {
+		while($counter < 10) {
 		
 			$suggested_password = "";
 			
@@ -125,6 +125,8 @@ trait Misc {
 			if(strlen(count_chars($suggested_password, 3)) > ($length-2)) {
 				break;
 			}
+			
+			$counter++;
 		}
 		
 		return $suggested_password;
