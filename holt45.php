@@ -217,4 +217,56 @@ class holt45 {
 		return $suggested_password;
 		
 	}
+	
+	/**
+	 * Convert <textarea> to [textarea].
+	 *
+	 * @param string $html
+	 * @return string
+	 */
+	public static function textarea_encode($html) {
+		return preg_replace("/<textarea(.*?)>(.*?)<\/textarea>/is", "[textarea$1]$2[/textarea]", $html);
+	}
+	
+	/**
+	 * Convert [textarea] to <textarea>.
+	 *
+	 * @param string $html
+	 * @return string
+	 */
+	public static function textarea_decode($html) {
+		return preg_replace("/\[textarea(.*?)\](.*?)\[\/textarea\]/is", "<textarea$1>$2</textarea>", $html);
+	}
+
+	/**
+	 * Convert timestamp to "x unit"
+	 *
+	 * @param string $timestamp
+	 * @return string
+	 */
+	public static function time_elapsed($timestamp) {
+		$seconds = max((time() - strtotime($timestamp)),0);
+		
+		if($seconds < 60) {
+			$number = $seconds;
+			$text = "second";
+		} elseif($seconds < (60 * 60)) {
+			$number = $seconds / 60;
+			$text = "minute";
+		} elseif($seconds < (60 * 60 * 24)) {
+			$number = $seconds / (60 * 60);
+			$text = "hour";
+		} else {
+			$number = $seconds / (60 * 60 * 24);
+			$text = "day";
+		}
+
+		$number = floor($number);
+		
+		if($number > 1) {
+		$text.="s";
+		}
+		
+		return "$number $text";
+	}
 }
