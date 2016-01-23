@@ -38,8 +38,9 @@ trait Get {
 		$keys_set = true;
 
 		foreach($keys AS $key) {
-		
-			if (empty($_GET[$key])) {
+			
+			$val = filter_input(INPUT_GET, $key);
+			if (empty($val)) {
 				$keys_set = false;
 			}
 		}

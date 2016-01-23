@@ -61,7 +61,7 @@ trait Misc {
 	 * Tries to auto-correct parse_url()-output.
 	 *
 	 * @param string $url
-	 * @return array
+	 * @return string[]|false
 	 */
 	
 	private static function autoCorrectParseUrl($url) {
@@ -98,7 +98,12 @@ trait Misc {
 	public static function urlParser($url) {
 		
 		$parseUrl = self::autoCorrectParseUrl($url);
-
+		
+		// malformed URL, parse_url() returns false. Returns urls "as is".
+		if($parseUrl === false) {
+			return array("url" => $url, "url_display" => $url);
+		}
+		
 		$urlArray = array("url" => "", "url_display" => "");
 		
 		// Check if scheme is correct
@@ -246,7 +251,11 @@ trait Misc {
 			$arrayData[] = 1;
 		} else {
 			// first + $totalPages-2 - $totalPages+2 + last
-			$arrayData = array_slice($tempArrayRange, $selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)), ($numberOfResults-2));
+			$arrayData = array_slice(
+									$tempArrayRange,
+									$selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)), 
+									($numberOfResults-2)
+									);
 			$arrayData[] = 1;
 			$arrayData[] = $totalPages;
 			
