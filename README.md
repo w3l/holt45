@@ -65,3 +65,9 @@ include_once("folder/holt45.php");
 ## constants
 * holt45::DATA_URI_TRANSPARENT_GIF
 * holt45::DATA_URI_TRANSPARENT_PNG
+
+## License
+
+
+Holt45 is [unlicense](http://unlicense.org/) licensed. **TL;DR?** Do what you want with the code.
+
