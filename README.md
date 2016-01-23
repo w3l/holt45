@@ -15,7 +15,21 @@
 
 *holt45 - a small library with some really basic functions...*
 
-## functions
+## Installation
+
+### Composer
+```sh
+composer require w3l/holt45
+```
+
+Holt45 at [packagist](https://packagist.org/packages/w3l/holt45)
+
+### Not composer
+```php
+include_once("folder/holt45.php");
+```
+
+## Functions
 ### $_GET
 * holt45::chkGet()
 * holt45::assignFromGet()
