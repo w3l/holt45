@@ -38,8 +38,9 @@ trait Post {
 		$keysSet = true;
 
 		foreach($keys AS $key) {
-		
-			if (empty($_POST[$key])) {
+			
+			$val = filter_input(INPUT_POST, $key);
+			if (empty($val)) {
 				$keysSet = false;
 			}
 		}
