@@ -34,7 +34,8 @@ trait Math
                 $tempArrayRange,
                 $selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)),
                 ($numberOfResults-2)
-                );
+            );
+
             $arrayData[] = 1;
             $arrayData[] = $totalPages;
 
