@@ -20,7 +20,7 @@ trait Convert {
 	 * Converts hexadecimal to red-green-blue(RGB)
 	 *
 	 * @param string $hex Hexadecimal color
-	 * @return null|array RGB color
+	 * @return null|int[] RGB color
 	 */
 	public static function hexrgb($hex) {
 		$hex = preg_replace("/[^0-9A-Fa-f]/", '', $hex);
@@ -46,7 +46,7 @@ trait Convert {
 	 *
 	 * @param array $arrayRGB RGB color
 	 * @param array $arrayRGB2 RGB color
-	 * @return array Blended RGB color
+	 * @return int[] Blended RGB color
 	 */
 	public static function colorBlend($arrayRGB,$arrayRGB2) {
 

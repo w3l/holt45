@@ -84,7 +84,7 @@ trait Strings {
 			while(count($colorsBuild) < $strlenText) {
 				for($i = 0, $size = count($colorsBase); $i < $size; $i++) {
 
-					$colorsBuild[] = $colors_base[$i];
+					$colorsBuild[] = $colorsBase[$i];
 					if(count($colorsBuild) >= $strlenText) { continue 2; }
 					
 					if($i < count($colorsBase)-1) {
