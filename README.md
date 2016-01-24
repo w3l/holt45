@@ -53,16 +53,20 @@ include_once("folder/holt45.php");
 ### Convert
 * holt45::rgbhex()
 
-### Misc
-* holt45::getClientIpAddress()
-* holt45::urlParser()
-* holt45::generatePassword()
+### Strings
 * holt45::textareaEncode()
 * holt45::textareaDecode()
 * holt45::obfuscateString()
 * holt45::deobfuscateString()
-* holt45::generatePaginationRange()
 * holt45::replaceString()
+
+### Math
+* holt45::generatePaginationRange()
+
+### Misc
+* holt45::getClientIpAddress()
+* holt45::urlParser()
+* holt45::generatePassword()
 * holt45::iso3166ToName()
 
 ## constants
