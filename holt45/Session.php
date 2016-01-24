@@ -23,8 +23,8 @@ trait Session {
      */
     public static function sessionIsset($name)
     {
-        if(isset($_SESSION[$name])) {
-            $expires = current(explode("-",$_SESSION[$name]));
+        if (isset($_SESSION[$name])) {
+            $expires = current(explode("-", $_SESSION[$name]));
             if (ctype_digit($expires) && $expires > time()) {
                 return true;
             } else {
@@ -44,7 +44,7 @@ trait Session {
      */
     public static function sessionRead($name)
     {
-        return substr(strstr($_SESSION[$name], '-'),1);
+        return substr(strstr($_SESSION[$name], '-'), 1);
     }
 
     /**

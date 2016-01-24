@@ -41,7 +41,7 @@ trait Get {
     {
         $keysSet = true;
 
-        foreach ($keys AS $key) {
+        foreach ($keys as $key) {
 
             $val = filter_input(INPUT_GET, $key);
             if (empty($val)) {

@@ -14,7 +14,7 @@ trait Time
      */
     public static function timestampToHttpDate($timestamp)
     {
-        if ($timestamp == NULL) {
+        if ($timestamp == null) {
             return null;
         }
         return gmdate("D, d M Y H:i:s T", strtotime($timestamp));
@@ -28,7 +28,7 @@ trait Time
      */
     public static function timeElapsed($timestamp)
     {
-        $seconds = max((time() - strtotime($timestamp)),0);
+        $seconds = max((time() - strtotime($timestamp)), 0);
 
         if ($seconds < 60) {
             $number = $seconds;

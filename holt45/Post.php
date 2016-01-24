@@ -41,7 +41,7 @@ trait Post {
     {
         $keysSet = true;
 
-        foreach ($keys AS $key) {
+        foreach ($keys as $key) {
 
             $val = filter_input(INPUT_POST, $key);
             if (empty($val)) {

@@ -100,7 +100,7 @@ trait Strings {
 
                         $colorsBuild[] = self::colorBlend($colorsBase[$i], $colorsBase[$i+1]);
 
-                        if(count($colorsBuild) >= $strlenText) {
+                        if (count($colorsBuild) >= $strlenText) {
                             continue 2;
                         }
                     }

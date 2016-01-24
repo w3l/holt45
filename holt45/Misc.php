@@ -85,7 +85,7 @@ trait Misc {
         $parseUrl = self::autoCorrectParseUrl($url);
 
         // malformed URL, parse_url() returns false. Returns urls "as is".
-        if($parseUrl === false) {
+        if ($parseUrl === false) {
             return array("url" => $url, "url_display" => $url);
         }
 
@@ -154,11 +154,11 @@ trait Misc {
 
             $suggestedPassword = "";
 
-            for($i = 0; $i < $length; $i++) {
-                $suggestedPassword .= $characterSet[rand(0,($characterSetLenght-1))];
+            for ($i = 0; $i < $length; $i++) {
+                $suggestedPassword .= $characterSet[rand(0, ($characterSetLenght-1))];
             }
 
-            if(strlen(count_chars($suggestedPassword, 3)) > ($length-2)) {
+            if (strlen(count_chars($suggestedPassword, 3)) > ($length-2)) {
                 break;
             }
 

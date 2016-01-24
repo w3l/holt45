@@ -12,7 +12,7 @@ trait Convert {
     public static function rgbhex($rgb)
     {
         $hex = "";
-        foreach ($rgb AS $color) {
+        foreach ($rgb as $color) {
             $hex .= str_pad(dechex($color), 2, "0", STR_PAD_LEFT);
         }
         return $hex;
