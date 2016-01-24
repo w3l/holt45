@@ -52,6 +52,7 @@ include_once("folder/holt45.php");
 
 ### Convert
 * holt45::rgbhex()
+* holt45::hexrgb()
 
 ### Strings
 * holt45::textareaEncode()
@@ -59,6 +60,7 @@ include_once("folder/holt45.php");
 * holt45::obfuscateString()
 * holt45::deobfuscateString()
 * holt45::replaceString()
+* holt45::rainbowText()
 
 ### Math
 * holt45::generatePaginationRange()

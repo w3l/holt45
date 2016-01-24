@@ -59,4 +59,53 @@ trait Strings {
 		return $langString;
 	}
 
+	/**
+	* Creates rainbow-colored text.
+	*
+	* @param string $text Text wanted coloured.
+	* @return string String with span-tags with color.
+	*/
+	public static function rainbowText($text) {
+		$colorsBase = array(
+		array(255, 0, 0),
+		array(255, 102, 0),
+		array(255, 238, 0),
+		array(0, 255, 0),
+		array(0, 153, 255),
+		array(68, 0, 255),
+		array(153, 0, 255)
+		);
+
+		$colorsBuild = array();
+
+		$strlenText = strlen($text);
+
+		if($strlenText > 7) {
+			while(count($colorsBuild) < $strlenText) {
+				for($i = 0, $size = count($colorsBase); $i < $size; $i++) {
+
+					$colorsBuild[] = $colorsBase[$i];
+					if(count($colorsBuild) >= $strlenText) { continue 2; }
+					
+					if($i < count($colorsBase)-1) {
+						$colorsBuild[] = holt45::colorBlend($colorsBase[$i], $colorsBase[$i+1]);
+						if(count($colorsBuild) >= $strlenText) { continue 2; }
+					}
+				}
+				$colorsBase = $colorsBuild;
+				$colorsBuild = array();
+			}
+		} elseif($strlenText <= 7) {
+			$colorsBuild = $colorsBase;
+		}
+
+		$arrayText = str_split($text);
+		$returnText = "";
+		for($i = 0, $size = count($arrayText); $i < $size; $i++) {
+			$returnText .= '<span style="color: #'.holt45::rgbhex($colorsBuild[$i]).';">'.$arrayText[$i].'</span>';
+		}
+		return $returnText;
+
+	}
+
 }
