@@ -12,6 +12,7 @@ require_once dirname(__FILE__) . '/holt45/Get.php';
 require_once dirname(__FILE__) . '/holt45/Post.php';
 require_once dirname(__FILE__) . '/holt45/Session.php';
 require_once dirname(__FILE__) . '/holt45/Time.php';
+require_once dirname(__FILE__) . '/holt45/Convert.php';
 require_once dirname(__FILE__) . '/holt45/Misc.data.inc';
 require_once dirname(__FILE__) . '/holt45/Misc.php';
 
