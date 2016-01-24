@@ -12,6 +12,7 @@ require_once dirname(__FILE__) . '/holt45/Get.php';
 require_once dirname(__FILE__) . '/holt45/Post.php';
 require_once dirname(__FILE__) . '/holt45/Session.php';
 require_once dirname(__FILE__) . '/holt45/Time.php';
+require_once dirname(__FILE__) . '/holt45/Convert.php';
 require_once dirname(__FILE__) . '/holt45/Misc.data.inc';
 require_once dirname(__FILE__) . '/holt45/Misc.php';
 
@@ -24,6 +25,7 @@ class Holt45 {
 	use \w3l\Holt45\Post;
 	use \w3l\Holt45\Session;
 	use \w3l\Holt45\Time;
+	use \w3l\Holt45\Convert;
 	use \w3l\Holt45\MiscData;
 	use \w3l\Holt45\Misc;
 }

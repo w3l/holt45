@@ -50,6 +50,9 @@ include_once("folder/holt45.php");
 * holt45::timestampToHttpDate()
 * holt45::timeElapsed()
 
+### Convert
+* holt45::rgbhex()
+
 ### Misc
 * holt45::getClientIpAddress()
 * holt45::urlParser()
