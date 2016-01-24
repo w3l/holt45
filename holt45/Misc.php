@@ -23,21 +23,21 @@ trait Misc {
      *
      * @return string User ip-address
      */
-    public static function getClientIpAddress() {
-
-        if (getenv('HTTP_CLIENT_IP'))
+    public static function getClientIpAddress()
+    {
+        if (getenv('HTTP_CLIENT_IP')) {
             return getenv('HTTP_CLIENT_IP');
-        elseif (getenv('HTTP_X_FORWARDED_FOR'))
+        } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
             return getenv('HTTP_X_FORWARDED_FOR');
-        elseif (getenv('HTTP_X_FORWARDED'))
+        } elseif (getenv('HTTP_X_FORWARDED')) {
             return getenv('HTTP_X_FORWARDED');
-        elseif (getenv('HTTP_FORWARDED_FOR'))
+        } elseif (getenv('HTTP_FORWARDED_FOR')) {
             return getenv('HTTP_FORWARDED_FOR');
-        elseif (getenv('HTTP_FORWARDED'))
+        } elseif (getenv('HTTP_FORWARDED')) {
             return getenv('HTTP_FORWARDED');
-        elseif (getenv('REMOTE_ADDR'))
+        } elseif (getenv('REMOTE_ADDR')) {
             return getenv('REMOTE_ADDR');
-
+        }
         return '127.0.0.1'; // Unknown IP
     }
 
@@ -50,7 +50,7 @@ trait Misc {
     private static function autoCorrectParseUrl($url)
     {
         // multiple /// messes up parse_url, replace 3 or more with 2
-        $url = preg_replace('/(\/{2,})/','//',$url);
+        $url = preg_replace('/(\/{2,})/', '//', $url);
 
         $parseUrl = parse_url($url);
 
@@ -92,7 +92,7 @@ trait Misc {
         $urlArray = array("url" => "", "url_display" => "");
 
         // Check if scheme is correct
-        if(!in_array($parseUrl["scheme"], array("http", "https", "gopher"))) {
+        if (!in_array($parseUrl["scheme"], array("http", "https", "gopher"))) {
             $urlArray["url"] .= 'http'.'://';
         } else {
             $urlArray["url"] .= $parseUrl["scheme"].'://';
@@ -116,8 +116,8 @@ trait Misc {
             }
         }
 
-        $urlArray["url"] .= implode(".",$explodeHost);
-        $urlArray["url_display"] = trim(implode(".",$explodeHost), '\/'); // Removes trailing slash
+        $urlArray["url"] .= implode(".", $explodeHost);
+        $urlArray["url_display"] = trim(implode(".", $explodeHost), '\/'); // Removes trailing slash
 
         if (!empty($parseUrl["port"])) {
             $urlArray["url"] .= ":".$parseUrl["port"];

@@ -12,7 +12,7 @@ trait Convert {
     public static function rgbhex($rgb)
     {
         $hex = "";
-        foreach($rgb AS $color) {
+        foreach ($rgb AS $color) {
             $hex .= str_pad(dechex($color), 2, "0", STR_PAD_LEFT);
         }
         return $hex;
@@ -33,16 +33,16 @@ trait Convert {
         if ($strlenHex >= 3) {
             if ($strlenHex >= 6) {
                 if ($strlenHex > 6) {
-                    $hex = substr($hex,0,6);
+                    $hex = substr($hex, 0, 6);
                 }
-                $hexArray = str_split($hex,2);
+                $hexArray = str_split($hex, 2);
             } elseif ($strlenHex < 6) {
                 $hexArray = array("$hex[0]$hex[0]", "$hex[1]$hex[1]", "$hex[2]$hex[2]");
             }
             return array(hexdec($hexArray[0]), hexdec($hexArray[1]), hexdec($hexArray[2]));
         }
 
-        return NULL;
+        return null;
     }
 
     /**

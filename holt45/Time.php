@@ -14,7 +14,9 @@ trait Time
      */
     public static function timestampToHttpDate($timestamp)
     {
-        if ($timestamp == NULL) { return NULL; }
+        if ($timestamp == NULL) {
+            return null;
+        }
         return gmdate("D, d M Y H:i:s T", strtotime($timestamp));
     }
 

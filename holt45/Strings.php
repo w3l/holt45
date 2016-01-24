@@ -86,16 +86,23 @@ trait Strings {
 
         $strlenText = strlen($text);
 
-            if ($strlenText > 7) {
+        if ($strlenText > 7) {
             while (count($colorsBuild) < $strlenText) {
                 for ($i = 0, $size = count($colorsBase); $i < $size; $i++) {
 
                     $colorsBuild[] = $colorsBase[$i];
-                    if (count($colorsBuild) >= $strlenText) { continue 2; }
+
+                    if (count($colorsBuild) >= $strlenText) {
+                        continue 2;
+                    }
 
                     if ($i < count($colorsBase)-1) {
+
                         $colorsBuild[] = self::colorBlend($colorsBase[$i], $colorsBase[$i+1]);
-                        if(count($colorsBuild) >= $strlenText) { continue 2; }
+
+                        if(count($colorsBuild) >= $strlenText) {
+                            continue 2;
+                        }
                     }
                 }
                 $colorsBase = $colorsBuild;
