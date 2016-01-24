@@ -1,7 +1,8 @@
 <?php
 namespace w3l\Holt45;
-trait Math {
 
+trait Math
+{
 	/**
 	 * Create range for pagination
 	 *
