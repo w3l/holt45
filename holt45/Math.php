@@ -31,9 +31,9 @@ trait Math
         } else {
             // first + $totalPages-2 - $totalPages+2 + last
             $arrayData = array_slice(
-            $tempArrayRange,
-            $selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)),
-            ($numberOfResults-2)
+                $tempArrayRange,
+                $selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)),
+                ($numberOfResults-2)
             );
 
             $arrayData[] = 1;
