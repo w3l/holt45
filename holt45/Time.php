@@ -5,36 +5,36 @@ trait Time
 {
 
     /**
-    * Convert timestamp to HTTP-date (RFC2616)
-    *
-    * For use in "Last-Modified" headers.
-    *
-    * @param string $timestamp
-    * @return string|null
-    */
+     * Convert timestamp to HTTP-date (RFC2616)
+     *
+     * For use in "Last-Modified" headers.
+     *
+     * @param string $timestamp
+     * @return string|null
+     */
     public static function timestampToHttpDate($timestamp)
     {
-        if($timestamp == NULL) { return NULL; }
+        if ($timestamp == NULL) { return NULL; }
         return gmdate("D, d M Y H:i:s T", strtotime($timestamp));
     }
 
     /**
-    * Convert timestamp to x unit(plural), like "6 minutes" or "1 day".
-    *
-    * @param string $timestamp
-    * @return string Formated time: "x unit(s)" or empty string
-    */
+     * Convert timestamp to x unit(plural), like "6 minutes" or "1 day".
+     *
+     * @param string $timestamp
+     * @return string Formated time: "x unit(s)" or empty string
+     */
     public static function timeElapsed($timestamp)
     {
         $seconds = max((time() - strtotime($timestamp)),0);
 
-        if($seconds < 60) {
+        if ($seconds < 60) {
             $number = $seconds;
             $text = "second";
-        } elseif($seconds < (60 * 60)) {
+        } elseif ($seconds < (60 * 60)) {
             $number = $seconds / 60;
             $text = "minute";
-        } elseif($seconds < (60 * 60 * 24)) {
+        } elseif ($seconds < (60 * 60 * 24)) {
             $number = $seconds / (60 * 60);
             $text = "hour";
         } else {
@@ -44,7 +44,7 @@ trait Time
 
         $number = floor($number);
 
-        if($number > 1) {
+        if ($number > 1) {
             $text.="s";
         }
 

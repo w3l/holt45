@@ -4,13 +4,13 @@ namespace w3l\Holt45;
 trait Misc {
 
     /**
-    * Convert ISO 3166-1 alpha-2 code to (English) country name.
-    *
-    * @link https://gist.github.com/IngmarBoddington/5909709 Source
-    *
-    * @param string $key ISO 3166-1 alpha-2 code
-    * @return string Country name OR $key if no match.
-    */
+     * Convert ISO 3166-1 alpha-2 code to (English) country name.
+     *
+     * @link https://gist.github.com/IngmarBoddington/5909709 Source
+     *
+     * @param string $key ISO 3166-1 alpha-2 code
+     * @return string Country name OR $key if no match.
+     */
     public static function iso3166ToName($key)
     {
         $countries = self::getCountriesList();
@@ -19,34 +19,34 @@ trait Misc {
     }
 
     /**
-    * Get client ip-address
-    *
-    * @return string User ip-address
-    */
+     * Get client ip-address
+     *
+     * @return string User ip-address
+     */
     public static function getClientIpAddress() {
 
         if (getenv('HTTP_CLIENT_IP'))
             return getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
+        elseif (getenv('HTTP_X_FORWARDED_FOR'))
             return getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
+        elseif (getenv('HTTP_X_FORWARDED'))
             return getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
+        elseif (getenv('HTTP_FORWARDED_FOR'))
             return getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
+        elseif (getenv('HTTP_FORWARDED'))
             return getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
+        elseif (getenv('REMOTE_ADDR'))
             return getenv('REMOTE_ADDR');
 
         return '127.0.0.1'; // Unknown IP
     }
 
     /**
-    * Tries to auto-correct parse_url()-output.
-    *
-    * @param string $url
-    * @return string[]|false
-    */
+     * Tries to auto-correct parse_url()-output.
+     *
+     * @param string $url
+     * @return string[]|false
+     */
     private static function autoCorrectParseUrl($url)
     {
         // multiple /// messes up parse_url, replace 3 or more with 2
@@ -54,10 +54,10 @@ trait Misc {
 
         $parseUrl = parse_url($url);
 
-        if(empty($parseUrl["scheme"])) {
+        if (empty($parseUrl["scheme"])) {
             $parseUrl["scheme"] = "http";
         }
-        if(empty($parseUrl["host"]) && !empty($parseUrl["path"])) {
+        if (empty($parseUrl["host"]) && !empty($parseUrl["path"])) {
             // Strip slash from the beginning of path
             $parseUrl["host"] = ltrim($parseUrl["path"], '\/');
             $parseUrl["path"] = "";
@@ -66,19 +66,19 @@ trait Misc {
     }
 
     /**
-    * parse url, try to correct errors and return valid url + display-url.
-    *
-    * @example http:/wwww.example.com/lorum.html => http://www.example.com/lorum.html
-    * @example gopher:/ww.example.com => gopher://www.example.com
-    * @example http:/www3.example.com/?q=asd&f=#asd =>http://www3.example.com/?q=asd&f=#asd
-    * @example asd://.example.com/folder/folder/ =>http://example.com/folder/folder/
-    * @example .example.com/ => http://example.com/
-    * @example example.com =>http://example.com
-    * @example subdomain.example.com => http://subdomain.example.com
-    *
-    * @param string $url Any somewhat valid url.
-    * @return string[] "url" contains an auto-corrected url. "url_display" host.tld or subdomain.host.tld
-    */
+     * parse url, try to correct errors and return valid url + display-url.
+     *
+     * @example http:/wwww.example.com/lorum.html => http://www.example.com/lorum.html
+     * @example gopher:/ww.example.com => gopher://www.example.com
+     * @example http:/www3.example.com/?q=asd&f=#asd =>http://www3.example.com/?q=asd&f=#asd
+     * @example asd://.example.com/folder/folder/ =>http://example.com/folder/folder/
+     * @example .example.com/ => http://example.com/
+     * @example example.com =>http://example.com
+     * @example subdomain.example.com => http://subdomain.example.com
+     *
+     * @param string $url Any somewhat valid url.
+     * @return string[] "url" contains an auto-corrected url. "url_display" host.tld or subdomain.host.tld
+     */
     public static function urlParser($url)
     {
 
@@ -107,9 +107,9 @@ trait Misc {
         $explodeHost = array_values($explodeHost);
 
         // Contains subdomain
-        if(count($explodeHost) > 2) {
+        if (count($explodeHost) > 2) {
             // Check if subdomain only contains the letter w(then not any other subdomain).
-            if(substr_count($explodeHost[0], 'w') == strlen($explodeHost[0])) {
+            if (substr_count($explodeHost[0], 'w') == strlen($explodeHost[0])) {
                 // Replace with "www" to avoid "ww" or "wwww", etc.
                 $explodeHost[0] = "www";
 
@@ -119,16 +119,16 @@ trait Misc {
         $urlArray["url"] .= implode(".",$explodeHost);
         $urlArray["url_display"] = trim(implode(".",$explodeHost), '\/'); // Removes trailing slash
 
-        if(!empty($parseUrl["port"])) {
+        if (!empty($parseUrl["port"])) {
             $urlArray["url"] .= ":".$parseUrl["port"];
         }
-        if(!empty($parseUrl["path"])) {
+        if (!empty($parseUrl["path"])) {
             $urlArray["url"] .= $parseUrl["path"];
         }
-        if(!empty($parseUrl["query"])) {
+        if (!empty($parseUrl["query"])) {
             $urlArray["url"] .= '?'.$parseUrl["query"];
         }
-        if(!empty($parseUrl["fragment"])) {
+        if (!empty($parseUrl["fragment"])) {
             $urlArray["url"] .= '#'.$parseUrl["fragment"];
         }
 
@@ -150,7 +150,7 @@ trait Misc {
         $counter = 0;
         $suggestedPassword = "";
 
-        while($counter < 10) {
+        while ($counter < 10) {
 
             $suggestedPassword = "";
 
