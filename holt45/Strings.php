@@ -88,7 +88,7 @@ trait Strings {
 					if(count($colorsBuild) >= $strlenText) { continue 2; }
 					
 					if($i < count($colorsBase)-1) {
-						$colorsBuild[] = holt45::colorBlend($colorsBase[$i], $colorsBase[$i+1]);
+						$colorsBuild[] = self::colorBlend($colorsBase[$i], $colorsBase[$i+1]);
 						if(count($colorsBuild) >= $strlenText) { continue 2; }
 					}
 				}
@@ -102,7 +102,7 @@ trait Strings {
 		$arrayText = str_split($text);
 		$returnText = "";
 		for($i = 0, $size = count($arrayText); $i < $size; $i++) {
-			$returnText .= '<span style="color: #'.holt45::rgbhex($colorsBuild[$i]).';">'.$arrayText[$i].'</span>';
+			$returnText .= '<span style="color: #'.self::rgbhex($colorsBuild[$i]).';">'.$arrayText[$i].'</span>';
 		}
 		return $returnText;
 
