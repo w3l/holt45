@@ -1,8 +1,8 @@
 <?php
 namespace w3l\Holt45;
 
-trait Post {
-
+trait Post
+{
     /**
      * Check $_POST
      *

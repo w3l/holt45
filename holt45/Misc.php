@@ -1,8 +1,8 @@
 <?php
 namespace w3l\Holt45;
 
-trait Misc {
-
+trait Misc
+{
     /**
      * Convert ISO 3166-1 alpha-2 code to (English) country name.
      *

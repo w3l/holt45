@@ -1,8 +1,8 @@
 <?php
 namespace w3l\Holt45;
 
-trait MiscData {
-
+trait MiscData
+{
     /**
      * List of 3166-1 alpha-2 codes
      *

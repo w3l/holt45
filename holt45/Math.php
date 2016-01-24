@@ -30,8 +30,7 @@ trait Math
             $arrayData[] = 1;
         } else {
             // first + $totalPages-2 - $totalPages+2 + last
-            $arrayData = array_slice
-                (
+            $arrayData = array_slice(
                 $tempArrayRange,
                 $selectedPage-(round(($numberOfResults / 2), 0, PHP_ROUND_HALF_DOWN)),
                 ($numberOfResults-2)

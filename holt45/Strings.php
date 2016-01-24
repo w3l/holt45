@@ -1,8 +1,8 @@
 <?php
 namespace w3l\Holt45;
 
-trait Strings {
-
+trait Strings
+{
     /**
      * Obfuscate string (url-safe and somewhat hard to guess).
      *

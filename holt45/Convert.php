@@ -1,8 +1,8 @@
 <?php
 namespace w3l\Holt45;
 
-trait Convert {
-
+trait Convert
+{
     /**
      * Converts red-green-blue(RGB) to hexadecimal
      *

@@ -1,8 +1,8 @@
 <?php
 namespace w3l\Holt45;
 
-trait Get {
-
+trait Get
+{
     /**
      * Check $_GET
      *

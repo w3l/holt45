@@ -3,7 +3,6 @@ namespace w3l\Holt45;
 
 trait Time
 {
-
     /**
      * Convert timestamp to HTTP-date (RFC2616)
      *

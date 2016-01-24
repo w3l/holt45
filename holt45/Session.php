@@ -1,8 +1,8 @@
 <?php
 namespace w3l\Holt45;
 
-trait Session {
-
+trait Session
+{
     /**
      * Handle sessions - set session
      *
@@ -31,9 +31,8 @@ trait Session {
                 unset($_SESSION[$name]);
                 return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
