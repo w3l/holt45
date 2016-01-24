@@ -65,8 +65,8 @@ trait Strings {
 	* @param string $text Text wanted coloured.
 	* @return string String with span-tags with color.
 	*/
-	function rainbowText($text) {
-		$colors_base = array(
+	public static function rainbowText($text) {
+		$colorsBase = array(
 		array(255, 0, 0),
 		array(255, 102, 0),
 		array(255, 238, 0),
@@ -76,33 +76,33 @@ trait Strings {
 		array(153, 0, 255)
 		);
 
-		$colors_build = array();
+		$colorsBuild = array();
 
 		$strlenText = strlen($text);
 
 		if($strlenText > 7) {
-			while(count($colors_build) < $strlenText) {
-				for($i = 0; $i < count($colors_base); $i++) {
+			while(count($colorsBuild) < $strlenText) {
+				for($i = 0, $size = count($colorsBase); $i < $size; $i++) {
 
-					$colors_build[] = $colors_base[$i];
-					if(count($colors_build) >= $strlenText) { continue 2; }
+					$colorsBuild[] = $colors_base[$i];
+					if(count($colorsBuild) >= $strlenText) { continue 2; }
 					
-					if($i < count($colors_base)-1) {
-						$colors_build[] = holt45::colorBlend($colors_base[$i], $colors_base[$i+1]);
-						if(count($colors_build) >= $strlenText) { continue 2; }
+					if($i < count($colorsBase)-1) {
+						$colorsBuild[] = holt45::colorBlend($colorsBase[$i], $colorsBase[$i+1]);
+						if(count($colorsBuild) >= $strlenText) { continue 2; }
 					}
 				}
-				$colors_base = $colors_build;
-				$colors_build = array();
+				$colorsBase = $colorsBuild;
+				$colorsBuild = array();
 			}
 		} elseif($strlenText <= 7) {
-			$colors_build = $colors_base;
+			$colorsBuild = $colorsBase;
 		}
 
 		$arrayText = str_split($text);
 		$returnText = "";
-		for($i = 0; $i < count($arrayText); $i++) {
-			$returnText .= '<span style="color: #'.holt45::rgbhex($colors_build[$i]).';">'.$arrayText[$i].'</span>';
+		for($i = 0, $size = count($arrayText); $i < $size; $i++) {
+			$returnText .= '<span style="color: #'.holt45::rgbhex($colorsBuild[$i]).';">'.$arrayText[$i].'</span>';
 		}
 		return $returnText;
 
