@@ -24,7 +24,7 @@ class Holt45 {
 	use \w3l\Holt45\Post;
 	use \w3l\Holt45\Session;
 	use \w3l\Holt45\Time;
-	use \w3l\Holt45\Convert
+	use \w3l\Holt45\Convert;
 	use \w3l\Holt45\MiscData;
 	use \w3l\Holt45\Misc;
 }
