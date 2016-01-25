@@ -9,6 +9,12 @@
         "url",
 		"password"
     ],
+    "homepage": "http://holt45.pw/",
+    "support": {
+        "issues": "https://github.com/w3l/holt45/issues",
+        "docs": "http://holt45.pw/"
+    },
+    "type": "library",
     "require": {
         "php": ">=5.3.0"
     },
