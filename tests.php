@@ -9,7 +9,7 @@ echo holt45::assignFromGet("q"); // "" or $_GET["q"]
 if (holt45::chkGetAll(array("q", "search"))) { echo '$_GET["q"] and $_GET["search"] is set'; }
 
 /* $_POST */
-if (holt45::chkPost()) { echo '$_POST["q"] is set'; }
+if (holt45::chkPost("q")) { echo '$_POST["q"] is set'; }
 
 echo holt45::assignFromPost("q"); // "" or $_POST["q"]
 
