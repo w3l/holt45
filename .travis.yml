@@ -12,6 +12,6 @@ cache:
     - vendor
 
 before_script:
-  - composer install --no-interaction
+  - composer install --no-dev --no-interaction
   
 script: phpunit --configuration="phpunit.xml.dist"
