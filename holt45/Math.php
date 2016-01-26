@@ -51,5 +51,4 @@ trait Math
 
         return $arrayData;
     }
-
 }

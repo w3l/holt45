@@ -57,5 +57,4 @@ trait Time
 
         return "$number $text";
     }
-
 }
