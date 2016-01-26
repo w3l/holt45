@@ -2,13 +2,13 @@
 <phpunit bootstrap="holt45.php">
     <testsuites>
         <testsuite name="holt45 AllTests">
-            <directory>./tests/</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory>./holt45/</directory>
-            <file>./holt45.php</file>
+            <directory>holt45</directory>
+            <file>holt45.php</file>
         </whitelist>
     </filter>
 </phpunit>

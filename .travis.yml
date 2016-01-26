@@ -6,12 +6,5 @@ php:
   - '7.0'
   - hhvm
   - nightly
-
-cache:
-  directories:
-    - vendor
-
-before_script:
-  - composer install --no-dev --no-interaction
   
 script: phpunit --configuration="phpunit.xml.dist"
