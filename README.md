@@ -39,7 +39,7 @@ holt45::getClientIpAddress()
 
 Generated API documentation is found [here](http://holt45.pw/docs)
 
-* **$_GET**
+* $_GET
   * chkGet()
   * assignFromGet()
   * chkGetAll()
