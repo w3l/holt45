@@ -1,4 +1,6 @@
 <?php
+namespace w3l\Holt45\Tests;
+
 include_once (dirname(dirname(__FILE__))."/holt45.php");
 
 class tests {
