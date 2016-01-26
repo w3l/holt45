@@ -1,84 +1,10 @@
-# holt45 - A library with a mix of functions...
-
-[![License](https://poser.pugx.org/w3l/holt45/license)](https://packagist.org/packages/w3l/holt45)
-[![Build Status](https://img.shields.io/travis/w3l/holt45.svg)](https://travis-ci.org/w3l/holt45)
-[![Latest Version](https://img.shields.io/packagist/v/w3l/holt45.svg)](https://packagist.org/packages/w3l/holt45)
-[![Dependency Status](https://img.shields.io/versioneye/d/w3l/holt45.svg)](https://www.versioneye.com/user/projects/569e23172025a6002e00014e)
-[![Badges](https://img.shields.io/badge/badges-shields.io-ff69b4.svg)](http://shields.io/)
-
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/w3l/holt45.svg)](https://scrutinizer-ci.com/g/w3l/holt45/?branch=master)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/43b42ce6-800c-42c8-8562-06ed841d8272.svg?label=SensioLabs)](https://insight.sensiolabs.com/projects/43b42ce6-800c-42c8-8562-06ed841d8272)
-[![Code Climate](https://img.shields.io/codeclimate/github/w3l/holt45.svg)](https://codeclimate.com/github/w3l/holt45)
-[![Codacy Badge](https://img.shields.io/codacy/a3955affc5dc4e57b48ae2a6a8eb5b2f.svg?label=codacy)](https://www.codacy.com/app/support_7/holt45)
-
-
-## Class Features
- - @todo: Write something awesome here.
- 
-
-## Installation
-
-### Composer
-```sh
-composer require w3l/holt45
-```
-
-Holt45 at [packagist](https://packagist.org/packages/w3l/holt45)
-
-### Manually
-```php
-include_once("folder/holt45.php");
-```
-
-### Usage
-```php
-holt45::getClientIpAddress()
-```
-
-## Documentation
-
-Generated API documentation is found [here](http://holt45.pw/docs)
-
-* $_GET
-  * chkGet()
-  * assignFromGet()
-  * chkGetAll()
-* $_POST
-  * chkPost()
-  * assignFromPost()
-  * chkPostAll()
-* Sessions
-  * sessionSet()
-  * sessionIsset()
-  * sessionRead()
-  * sessionDelete()
-* Time
-  * timestampToHttpDate()
-  * timeElapsed()
-* Convert
-  * rgbhex()
-  * hexrgb()
-* Strings
-  * textareaEncode()
-  * textareaDecode()
-  * obfuscateString()
-  * deobfuscateString()
-  * replaceString()
-  * rainbowText()
-* Math
-  * generatePaginationRange()
-* Misc
-  * getClientIpAddress()
-  * urlParser()
-  * generatePassword()
-  * iso3166ToName()
-* constants
-  * DATA_URI_TRANSPARENT_GIF
-  * DATA_URI_TRANSPARENT_PNG
-
-### Example code:
-```php
 <?php
+namespace w3l\Holt45\Tests;
+
+require_once dirname(__FILE__) . '/holt45.php';
+
+class tests {
+    function __construct() {
 /* $_GET */
 if (holt45::chkGet("q")) { echo '$_GET["q"] is set'; }
 
@@ -143,10 +69,5 @@ echo holt45::iso3166ToName("SE"); // SWEDEN
 echo holt45::DATA_URI_TRANSPARENT_GIF; // data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
 
 echo holt45::DATA_URI_TRANSPARENT_PNG; // data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=
-
-```
-
-## License
-
-Holt45 is [unlicense](http://unlicense.org/) licensed. **TL;DR?** Do what you want with the code.
-
+    }
+}

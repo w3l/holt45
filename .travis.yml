@@ -7,4 +7,4 @@ php:
   - hhvm
   - nightly
 
-script: phpunit holt45.php
+script: phpunit tests.php

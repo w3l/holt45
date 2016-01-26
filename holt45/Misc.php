@@ -180,5 +180,4 @@ trait Misc
 
         return $suggestedPassword;
     }
-
 }
