@@ -24,12 +24,12 @@ require_once dirname(__FILE__) . '/holt45/Misc.php';
 class Holt45 {
 
     /**
-     * Data URI: 1x1 transparent gif 
+     * Data URI: 1x1 transparent gif
      */
     const DATA_URI_TRANSPARENT_GIF = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
     
     /**
-     * Data URI: 1x1 transparent png 
+     * Data URI: 1x1 transparent png
      */
     const DATA_URI_TRANSPARENT_PNG = <<<EOD
 data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=
