@@ -1,9 +1,9 @@
 <?php
 namespace w3l\Holt45\Tests;
 
-require_once dirname(dirname(__FILE__)) . "/holt45.php";
+require_once dirname(__FILE__) . '/holt45/Holt45.php';
 
-class tests extends holt45 {
+class tests {
     function __construct() {
 /* $_GET */
 if (holt45::chkGet("q")) { echo '$_GET["q"] is set'; }
