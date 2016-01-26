@@ -3,7 +3,7 @@ namespace w3l\Holt45\Tests;
 
 include_once (dirname(dirname(__FILE__))."/holt45.php");
 
-class tests {
+class tests extends holt45 {
     function __construct() {
 /* $_GET */
 if (holt45::chkGet("q")) { echo '$_GET["q"] is set'; }
