@@ -1,4 +1,6 @@
 <?php
+include_once(realpath(dirname(dirname(__FILE__)))."/holt45.php");
+
 class tests {
     function __construct() {
 /* $_GET */
