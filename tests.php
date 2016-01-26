@@ -1,11 +1,15 @@
 <?php
+/**
+ * Tests.php
+ * @ignore
+ */
 namespace w3l\Holt45\Tests;
 
 require_once dirname(__FILE__) . '/holt45.php';
 
 class Tests extends \Holt45
 {
-    function allTests()
+    public function allTests()
     {
         /* $_GET */
         if (self::chkGet("q")) {
