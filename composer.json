@@ -1,6 +1,6 @@
 {
     "name": "w3l/holt45",
-    "description": "A small library with some really basic functions...",
+    "description": "A library with a mix of functions...",
     "license": "Unlicense",
     "keywords": [
         "noob",
@@ -12,7 +12,7 @@
     "homepage": "http://holt45.pw/",
     "support": {
         "issues": "https://github.com/w3l/holt45/issues",
-        "docs": "http://holt45.pw/"
+        "docs": "http://holt45.pw/docs/"
     },
     "type": "library",
     "require": {

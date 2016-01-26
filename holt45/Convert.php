@@ -1,6 +1,12 @@
 <?php
+/**
+ * Convert.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Convert and manipulate values.
+ */
 trait Convert
 {
     /**

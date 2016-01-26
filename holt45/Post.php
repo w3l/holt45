@@ -1,12 +1,21 @@
 <?php
+/**
+ * Post.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Check and assign from superglobal $_POST
+ */
 trait Post
 {
     /**
      * Check $_POST
      *
-     * @example if(chkPost("s") == "a") instead of if(isset($_POST["s"]) && $_POST["s"] == "a")
+     * Example:
+     * ```php
+     * if(chkPost("s") == "a") instead of if(isset($_POST["s"]) && $_POST["s"] == "a")
+     * ```
      *
      * @param string $key Post-key.
      * @return bool|string
@@ -19,7 +28,10 @@ trait Post
     /**
      * Assign value from $_POST
      *
-     * @example $var = assignFromPost("a") instead of $var = ((!empty($_POST["s"])) ? $_POST["s"] : "");
+     * Example:
+     * ```php
+     * $var = assignFromPost("a") instead of $var = ((!empty($_POST["s"])) ? $_POST["s"] : "");
+     * ```
      *
      * @param string $key Post-key.
      * @return string
@@ -32,7 +44,10 @@ trait Post
     /**
      * Check multiple $_POST-keys
      *
-     * @example if(chkPostAll(array("a","b"))) instead of if(!empty($_POST["a"]) && !empty($_POST["b"]))
+     * Example:
+     * ```php
+     * if(chkPostAll(array("a","b"))) instead of if(!empty($_POST["a"]) && !empty($_POST["b"]))
+     * ```
      *
      * @param array $keys Post-keys.
      * @return bool

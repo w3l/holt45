@@ -1,6 +1,12 @@
 <?php
+/**
+ * Math.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Calculate stuff
+ */
 trait Math
 {
     /**

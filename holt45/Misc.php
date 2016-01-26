@@ -1,12 +1,18 @@
 <?php
+/**
+ * Misc.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Things that does not fit in other traits...
+ */
 trait Misc
 {
     /**
      * Convert ISO 3166-1 alpha-2 code to (English) country name.
      *
-     * @link https://gist.github.com/IngmarBoddington/5909709 Source
+     * @uses Holt45::getCountriesList()
      *
      * @param string $key ISO 3166-1 alpha-2 code
      * @return string Country name OR $key if no match.
@@ -44,6 +50,8 @@ trait Misc
     /**
      * Tries to auto-correct parse_url()-output.
      *
+     * @used-by Holt45::autoCorrectParseUrl()
+     *
      * @param string $url
      * @return string[]|false
      */
@@ -68,13 +76,18 @@ trait Misc
     /**
      * parse url, try to correct errors and return valid url + display-url.
      *
-     * @example http:/wwww.example.com/lorum.html => http://www.example.com/lorum.html
-     * @example gopher:/ww.example.com => gopher://www.example.com
-     * @example http:/www3.example.com/?q=asd&f=#asd =>http://www3.example.com/?q=asd&f=#asd
-     * @example asd://.example.com/folder/folder/ =>http://example.com/folder/folder/
-     * @example .example.com/ => http://example.com/
-     * @example example.com =>http://example.com
-     * @example subdomain.example.com => http://subdomain.example.com
+     * Example:
+     * ```
+     * http:/wwww.example.com/lorum.html => http://www.example.com/lorum.html
+     * gopher:/ww.example.com => gopher://www.example.com
+     * http:/www3.example.com/?q=asd&f=#asd =>http://www3.example.com/?q=asd&f=#asd
+     * asd://.example.com/folder/folder/ =>http://example.com/folder/folder/
+     * .example.com/ => http://example.com/
+     * example.com =>http://example.com
+     * subdomain.example.com => http://subdomain.example.com
+     * ```
+     *
+     * @uses Holt45::autoCorrectParseUrl()
      *
      * @param string $url Any somewhat valid url.
      * @return string[] "url" contains an auto-corrected url. "url_display" host.tld or subdomain.host.tld

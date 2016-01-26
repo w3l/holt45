@@ -1,6 +1,12 @@
 <?php
+/**
+ * Session.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Set/Check/Read/Delete sessions(with automatic "expire" of session after x seconds).
+ */
 trait Session
 {
     /**

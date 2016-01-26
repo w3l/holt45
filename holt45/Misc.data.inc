@@ -1,14 +1,24 @@
 <?php
+/**
+ * Misc.data.inc
+ */
 namespace w3l\Holt45;
 
+/**
+ * Data for use in Misc
+ */
 trait MiscData
 {
     /**
      * List of 3166-1 alpha-2 codes
      *
+     * @link https://gist.github.com/IngmarBoddington/5909709 Source
+     *
+     * @used-by Holt45::iso3166ToName()
+     *
      * @return array
      */
-    public static function getCountriesList()
+    private static function getCountriesList()
     {
         return array(
         'AF' => 'AFGHANISTAN',
