@@ -1,7 +1,7 @@
 <?php
-include_once(realpath(dirname(dirname(__FILE__)))."/holt45.php");
+include_once (dirname(dirname(__FILE__))."/holt45.php");
 
-class tests\tests {
+class tests {
     function __construct() {
 /* $_GET */
 if (holt45::chkGet("q")) { echo '$_GET["q"] is set'; }
