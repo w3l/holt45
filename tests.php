@@ -1,7 +1,7 @@
 <?php
 namespace w3l\Holt45\Tests;
 
-require_once dirname(__FILE__) . '/holt45/Holt45.php';
+require_once dirname(__FILE__) . '/holt45.php';
 
 class tests {
     function __construct() {
