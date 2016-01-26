@@ -2,8 +2,9 @@
 /**
  * holt45 - a library with a mix of functions...
  *
- * @link https://github.com/w3l/holt45 Code
- * @link http://holt45.pw/ Documentation
+ * @link https://github.com/w3l/holt45 holt45 at github
+ * @link http://holt45.pw/ Webpage
+ * @link http://holt45.pw/docs/ Documentation of holt45
  * @copyright Unlicense
  * @version 0.4.5
  */
