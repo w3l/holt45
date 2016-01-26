@@ -3,26 +3,38 @@ namespace w3l\Holt45\Tests;
 
 require_once dirname(__FILE__) . '/holt45.php';
 
-class tests extends \holt45 {
-    function allTests() {
+class Tests extends \Holt45
+{
+    function allTests()
+    {
         /* $_GET */
-        if (self::chkGet("q")) { echo '$_GET["q"] is set'; }
+        if (self::chkGet("q")) {
+            echo '$_GET["q"] is set';
+        }
 
         echo self::assignFromGet("q"); // "" or $_GET["q"]
 
-        if (self::chkGetAll(array("q", "search"))) { echo '$_GET["q"] and $_GET["search"] is set'; }
+        if (self::chkGetAll(array("q", "search"))) {
+            echo '$_GET["q"] and $_GET["search"] is set';
+        }
 
         /* $_POST */
-        if (self::chkPost("q")) { echo '$_POST["q"] is set'; }
+        if (self::chkPost("q")) {
+            echo '$_POST["q"] is set';
+        }
 
         echo self::assignFromPost("q"); // "" or $_POST["q"]
 
-        if (self::chkPostAll(array("q", "search"))) { echo '$_POST["q"] and $_POST["search"] is set'; }
+        if (self::chkPostAll(array("q", "search"))) {
+            echo '$_POST["q"] and $_POST["search"] is set';
+        }
 
         /* Sessions */
         self::sessionSet("example_session_name", "content of session", 86400);
 
-        if (self::sessionIsset("example_session_name")) { echo 'Session example_session_name is set and not expired'; }
+        if (self::sessionIsset("example_session_name")) {
+            echo 'Session example_session_name is set and not expired';
+        }
 
         echo self::sessionRead("example_session_name"); // content of session
 
