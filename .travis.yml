@@ -6,5 +6,5 @@ php:
   - '7.0'
   - hhvm
   - nightly
-  
-script: phpunit --configuration="phpunit.xml.dist"
+
+script: phpunit tests.php

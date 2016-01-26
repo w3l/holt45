@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<phpunit>
-    <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory>holt45</directory>
-            <file>holt45.php</file>
-        </whitelist>
-    </filter>
-</phpunit>
