@@ -35,48 +35,48 @@ include_once("folder/holt45.php");
 holt45::getClientIpAddress()
 ```
 
-### Documentation
+## Documentation
 
 Generated API documentation is found [here](http://holt45.pw/docs)
 
-1. $_GET
+* **$_GET**
   * chkGet()
   * assignFromGet()
   * chkGetAll()
-2. $_POST
+* $_POST
   * chkPost()
   * assignFromPost()
   * chkPostAll()
-3. Sessions
+* Sessions
   * sessionSet()
   * sessionIsset()
   * sessionRead()
   * sessionDelete()
-4. Time
+* Time
   * timestampToHttpDate()
   * timeElapsed()
-5. Convert
+* Convert
   * rgbhex()
   * hexrgb()
-6. Strings
+* Strings
   * textareaEncode()
   * textareaDecode()
   * obfuscateString()
   * deobfuscateString()
   * replaceString()
   * rainbowText()
-7. Math
+* Math
   * generatePaginationRange()
-8. Misc
+* Misc
   * getClientIpAddress()
   * urlParser()
   * generatePassword()
   * iso3166ToName()
-9. constants
+* constants
   * DATA_URI_TRANSPARENT_GIF
   * DATA_URI_TRANSPARENT_PNG
 
-Example code:
+### Example code:
 ```php
 <?php
 /* $_GET */
