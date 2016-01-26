@@ -1,5 +1,5 @@
 <?php
-include_once("holt45.php");
+include_once("../holt45.php");
 class tests {
     function __construct() {
 /* $_GET */
@@ -8,7 +8,7 @@ if (holt45::chkGet("q")) { echo '$_GET["q"] is set'; }
 echo holt45::assignFromGet("q"); // "" or $_GET["q"]
 
 if (holt45::chkGetAll(array("q", "search"))) { echo '$_GET["q"] and $_GET["search"] is set'; }
-11111
+
 /* $_POST */
 if (holt45::chkPost("q")) { echo '$_POST["q"] is set'; }
 
