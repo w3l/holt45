@@ -1,4 +1,4 @@
-# holt45
+# holt45 - A library with a mix of functions...
 
 [![License](https://poser.pugx.org/w3l/holt45/license)](https://packagist.org/packages/w3l/holt45)
 [![Build Status](https://img.shields.io/travis/w3l/holt45.svg)](https://travis-ci.org/w3l/holt45)
@@ -12,8 +12,9 @@
 [![Codacy Badge](https://img.shields.io/codacy/a3955affc5dc4e57b48ae2a6a8eb5b2f.svg?label=codacy)](https://www.codacy.com/app/support_7/holt45)
 
 
-
-*holt45 - a small library with some really basic functions...*
+## Class Features
+ - @todo: Write something awesome here.
+ 
 
 ## Installation
 
@@ -24,59 +25,91 @@ composer require w3l/holt45
 
 Holt45 at [packagist](https://packagist.org/packages/w3l/holt45)
 
-### Not composer
+### Manually
 ```php
 include_once("folder/holt45.php");
 ```
 
-## Functions
-### $_GET
-* holt45::chkGet()
-* holt45::assignFromGet()
-* holt45::chkGetAll()
+### Usage
+```php
+holt45::getClientIpAddress()
+```
 
-### $_POST
-* holt45::chkPost()
-* holt45::assignFromPost()
-* holt45::chkPostAll()
+### Documentation
 
-### Sessions
-* holt45::sessionSet()
-* holt45::sessionIsset()
-* holt45::sessionRead()
-* holt45::sessionDelete()
+Generated API documentation is found [here](http://holt45.pw/docs)
 
-### Time
-* holt45::timestampToHttpDate()
-* holt45::timeElapsed()
+Example code:
+```php
+<?php
+/* $_GET */
+if (holt45::chkGet("q")) { echo '$_GET["q"] is set'; }
 
-### Convert
-* holt45::rgbhex()
-* holt45::hexrgb()
+echo holt45::assignFromGet("q"); // "" or $_GET["q"]
 
-### Strings
-* holt45::textareaEncode()
-* holt45::textareaDecode()
-* holt45::obfuscateString()
-* holt45::deobfuscateString()
-* holt45::replaceString()
-* holt45::rainbowText()
+if (holt45::chkGetAll(array("q", "search"))) { echo '$_GET["q"] and $_GET["search"] is set'; }
 
-### Math
-* holt45::generatePaginationRange()
+/* $_POST */
+if (holt45::chkPost()) { echo '$_POST["q"] is set'; }
 
-### Misc
-* holt45::getClientIpAddress()
-* holt45::urlParser()
-* holt45::generatePassword()
-* holt45::iso3166ToName()
+echo holt45::assignFromPost("q"); // "" or $_POST["q"]
 
-## constants
-* holt45::DATA_URI_TRANSPARENT_GIF
-* holt45::DATA_URI_TRANSPARENT_PNG
+if (holt45::chkPostAll(array("q", "search"))) { echo '$_POST["q"] and $_POST["search"] is set'; }
+
+/* Sessions */
+holt45::sessionSet("example_session_name", "content of session", 86400);
+
+if (holt45::sessionIsset("example_session_name")) { echo 'Session example_session_name is set and not expired'; }
+
+echo holt45::sessionRead("example_session_name"); // content of session
+
+holt45::sessionDelete("example_session_name"); // Deletes session
+
+/* Time */
+echo holt45::timestampToHttpDate("1980-01-01 17:15:00"); // Tue, 01 Jan 1980 16:15:00 GMT
+
+echo holt45::timeElapsed("1980-01-01 17:15:00"); // 13173 days
+
+/* Convert */
+echo holt45::rgbhex(array(255, 0, 0)); // ff0000
+
+print_r(holt45::hexrgb("#FF0000")); // Array([0] => 255, [1] => 0, [2] => 0)
+
+/* Strings */
+echo holt45::textareaEncode('<textarea id="tex1"></textarea> <p> asdasd </p>'); // [textarea id="tex1"][/textarea] <p> asdasd </p>
+
+echo holt45::textareaDecode('[textarea id="tex1"][/textarea] <p> asdasd </p>'); // <textarea id="tex1"></textarea> <p> asdasd </p>
+
+echo holt45::obfuscateString("Hi, I'm a ninja!"); // 49574671626d6c75494745676253644a4943787053413d3d
+
+echo holt45::deobfuscateString("49574671626d6c75494745676253644a4943787053413d3d"); // Hi, I'm a ninja!
+
+echo holt45::replaceString("Hi my name is [@foo] and i like [@bar]", array("foo" => "sven", "bar" => "beer")); // Hi my name is sven and i like beer
+
+echo holt45::rainbowText("Hallo world"); // <span style="color: #ff0000;">H</span><span style="color: #ff3300;">a</span>...
+
+/* Math */
+print_r(holt45::generatePaginationRange(106, 15, 7)); // Array([0] => 1, [1] => 13, [2] => 14, [3] => 15, [4] => 16, [5] => 17, [6] => 106)
+
+/* Misc */
+echo holt45::getClientIpAddress(); // 127.0.0.1
+
+print_r(holt45::urlParser("htt://w.google..com/")); // Array([url] => http://www.google.com/, [url_display] => www.google.com)
+
+echo holt45::generatePassword(10); // 2k%=cbot:w
+
+echo holt45::generatePassword(10, "simple"); // m9b7gfkmhc
+
+echo holt45::iso3166ToName("SE"); // SWEDEN
+
+/* constants */
+echo holt45::DATA_URI_TRANSPARENT_GIF; // data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+
+echo holt45::DATA_URI_TRANSPARENT_PNG; // data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=
+
+```
 
 ## License
-
 
 Holt45 is [unlicense](http://unlicense.org/) licensed. **TL;DR?** Do what you want with the code.
 

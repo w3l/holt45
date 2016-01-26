@@ -1,6 +1,12 @@
 <?php
+/**
+ * Time.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Convert/display time
+ */
 trait Time
 {
     /**

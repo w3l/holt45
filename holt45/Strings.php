@@ -1,6 +1,12 @@
 <?php
+/**
+ * Strings.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Handle strings(convert, encode, replace, etc).
+ */
 trait Strings
 {
     /**
@@ -50,7 +56,10 @@ trait Strings
     /**
      * To replace "Hallo [@var] world" with $value.
      *
-     * @example replace_string($string, array("val1" => "foo", "val2" => "bar"))
+     * Example:
+     * ```php
+     * replace_string($string, array("val1" => "foo", "val2" => "bar"))
+     * ```
      *
      * @param string $langString String containing placeholder.
      * @param array $dynamicContent key->value array.
@@ -66,6 +75,9 @@ trait Strings
 
     /**
      * Creates rainbow-colored text.
+     *
+     * @uses Holt45::colorBlend()
+     * @uses Holt45::rgbhex()
      *
      * @param string $text Text wanted coloured.
      * @return string String with span-tags with color.

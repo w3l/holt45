@@ -1,12 +1,21 @@
 <?php
+/**
+ * Get.php
+ */
 namespace w3l\Holt45;
 
+/**
+ * Check and assign from superglobal $_GET
+ */
 trait Get
 {
     /**
      * Check $_GET
      *
-     * @example if(chkGet("s") == "a") instead of if(isset($_GET["s"]) && $_GET["s"] == "a")
+     * Example:
+     * ```php
+     * if(chkGet("s") == "a") instead of if(isset($_GET["s"]) && $_GET["s"] == "a")
+     * ```
      *
      * @param string $key Get-key.
      * @return bool|string
@@ -19,7 +28,10 @@ trait Get
     /**
      * Assign value from $_GET
      *
-     * @example $var = assignFromGet("a") instead of $var = ((!empty($_GET["s"])) ? $_GET["s"] : "");
+     * Example:
+     * ```php
+     * $var = assignFromGet("a") instead of $var = ((!empty($_GET["s"])) ? $_GET["s"] : "");
+     * ```
      *
      * @param string $key Get-key.
      * @return string
@@ -32,7 +44,10 @@ trait Get
     /**
      * Check multiple $_GET-keys
      *
-     * @example if(chkGetAll(array("a","b"))) instead of if(!empty($_GET["a"]) && !empty($_GET["b"]))
+     * Example:
+     * ```php
+     * if(chkGetAll(array("a","b"))) instead of if(!empty($_GET["a"]) && !empty($_GET["b"]))
+     * ```
      *
      * @param array $keys Get-keys.
      * @return bool
