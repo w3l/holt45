@@ -39,6 +39,43 @@ holt45::getClientIpAddress()
 
 Generated API documentation is found [here](http://holt45.pw/docs)
 
+1. $_GET
+  * chkGet()
+  * assignFromGet()
+  * chkGetAll()
+2. $_POST
+  * chkPost()
+  * assignFromPost()
+  * chkPostAll()
+3. Sessions
+  * sessionSet()
+  * sessionIsset()
+  * sessionRead()
+  * sessionDelete()
+4. Time
+  * timestampToHttpDate()
+  * timeElapsed()
+5. Convert
+  * rgbhex()
+  * hexrgb()
+6. Strings
+  * textareaEncode()
+  * textareaDecode()
+  * obfuscateString()
+  * deobfuscateString()
+  * replaceString()
+  * rainbowText()
+7. Math
+  * generatePaginationRange()
+8. Misc
+  * getClientIpAddress()
+  * urlParser()
+  * generatePassword()
+  * iso3166ToName()
+9. constants
+  * DATA_URI_TRANSPARENT_GIF
+  * DATA_URI_TRANSPARENT_PNG
+
 Example code:
 ```php
 <?php
