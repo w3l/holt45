@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests.php 
+ * Tests.php
  * @ignore
  */
 namespace w3l\Holt45\Tests;
