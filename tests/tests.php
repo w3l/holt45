@@ -1,5 +1,5 @@
 <?php
-include_once("../holt45.php");
+include_once("/holt45.php");
 class tests {
     function __construct() {
 /* $_GET */
