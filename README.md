@@ -62,6 +62,7 @@ Generated API documentation is found [here](http://holt45.pw/docs)
 * Convert
   * rgbhex()
   * hexrgb()
+  * colorBlend()
 * Strings
   * textareaEncode()
   * textareaDecode()
@@ -124,6 +125,8 @@ echo holt45::getClientBrowser(); // Firefox
 echo holt45::rgbhex(array(255, 0, 0)); // ff0000
 
 print_r(holt45::hexrgb("#FF0000")); // Array([0] => 255, [1] => 0, [2] => 0)
+
+print_r(holt45::colorBlend(array(0, 0, 0), array(255, 255, 255))); // Array ( [0] => 128 [1] => 128 [2] => 128 )
 
 /* Strings */
 echo holt45::textareaEncode('<textarea id="tex1"></textarea> <p> asdasd </p>'); // [textarea id="tex1"][/textarea] <p> asdasd </p>

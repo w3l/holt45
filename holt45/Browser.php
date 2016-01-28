@@ -1,11 +1,11 @@
 <?php
 /**
- * Misc.php
+ * Browser.php
  */
 namespace w3l\Holt45;
 
 /**
- * Things that does not fit in other traits...
+ * Get data from the browser/user.
  */
 trait Browser
 {
@@ -75,7 +75,7 @@ trait Browser
             if ((
                 preg_match('/MSIE/i', $userAgent) ||
                 preg_match('/Trident/i', $userAgent)
-                ) && 
+                ) &&
                 !preg_match('/Opera/i', $userAgent)) {
                 return 'Internet Explorer';
             } elseif (preg_match('/Camino/i', $userAgent)) {

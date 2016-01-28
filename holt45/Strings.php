@@ -221,15 +221,16 @@ trait Strings
      * @param string $inputOperatingSystem
      * @param string $inputKbdClass
      * @param string $inputKbdSymbolClass
-     * @param string $inputJoinHtml Glue
+     * @param string $inputJoinGlue Glue
      * @return string String of html
      */
-    public static function kbdShortcut($inputArrayKeys,
-                                       $inputOperatingSystem = "default",
-                                       $inputKbdClass = "holt45-kbd",
-                                       $inputKbdSymbolClass = "holt45-kbd__symbol",
-                                       $inputJoinGlue = " + ")
-    {
+    public static function kbdShortcut(
+        $inputArrayKeys,
+        $inputOperatingSystem = "default",
+        $inputKbdClass = "holt45-kbd",
+        $inputKbdSymbolClass = "holt45-kbd__symbol",
+        $inputJoinGlue = " + "
+    ) {
         $returnArray = array();
 
         foreach ($inputArrayKeys as $key) {

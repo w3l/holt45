@@ -60,6 +60,8 @@ class Tests extends \Holt45
         echo self::rgbhex(array(255, 0, 0)); // ff0000
 
         print_r(self::hexrgb("#FF0000")); // Array([0] => 255, [1] => 0, [2] => 0)
+        
+        print_r(self::colorBlend(array(0, 0, 0), array(255, 255, 255))); // Array ( [0] => 128 [1] => 128 [2] => 128 )
 
         /* Strings */
         echo self::textareaEncode('<textarea id="tex1"></textarea> <p> asdasd </p>'); // [textarea id="tex1"][/textarea] <p> asdasd </p>
