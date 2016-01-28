@@ -142,16 +142,16 @@ trait Strings
      * @return null|string HTML Entity (decimal)
      */
     public static function kbdSymbol($inputKey, $inputOperatingSystem = "default")
-    {   
+    {
         $inputKey = mb_strtolower($inputKey);
         
-        if($inputOperatingSystem == "auto") {
+        if ($inputOperatingSystem == "auto") {
             
             $inputOperatingSystem = "default";
             
             $getClientOperatingSystem = self::getClientOperatingSystem();
             
-            if ($getClientOperatingSystem == "linux" || 
+            if ($getClientOperatingSystem == "linux" ||
                 $getClientOperatingSystem == "mac" ||
                 $getClientOperatingSystem == "win") {
                    $inputOperatingSystem = $getClientOperatingSystem;
@@ -204,7 +204,9 @@ trait Strings
         
         if (array_key_exists($inputKey, $arrayKeySymbols)) {
             
-            return ((array_key_exists($inputOperatingSystem, $arrayKeySymbols[$inputKey])) ? $arrayKeySymbols[$inputKey][$inputOperatingSystem] : $arrayKeySymbols[$inputKey]["default"]);
+            return ((array_key_exists($inputOperatingSystem, $arrayKeySymbols[$inputKey])) ?
+                                      $arrayKeySymbols[$inputKey][$inputOperatingSystem] :
+                                      $arrayKeySymbols[$inputKey]["default"]);
         }
         
         return null;
@@ -222,17 +224,21 @@ trait Strings
      * @param string $inputJoinHtml Glue
      * @return string String of html
      */
-    public static function kbdShortcut($inputArrayKeys, $inputOperatingSystem = "default", $inputKbdClass = "holt45-kbd", $inputKbdSymbolClass = "holt45-kbd__symbol", $inputJoinGlue = " + ")
+    public static function kbdShortcut($inputArrayKeys,
+                                       $inputOperatingSystem = "default",
+                                       $inputKbdClass = "holt45-kbd",
+                                       $inputKbdSymbolClass = "holt45-kbd__symbol",
+                                       $inputJoinGlue = " + ")
     {
         $returnArray = array();
 
-        foreach ($inputArrayKeys AS $key) {
+        foreach ($inputArrayKeys as $key) {
             
             $kbdSymbol = self::kbdSymbol($key, $inputOperatingSystem);
             
             $kbdSymbolHtml = "";
             
-            if ($kbdSymbol !== NULL) {
+            if ($kbdSymbol !== null) {
                 $kbdSymbolHtml = '<span class="'.$inputKbdSymbolClass.'">'.$kbdSymbol.'</span>';
             }
             

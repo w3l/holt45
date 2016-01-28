@@ -44,7 +44,7 @@ trait Browser
      */
     public static function getClientOperatingSystem()
     {
-        if(getenv('HTTP_USER_AGENT')) {
+        if (getenv('HTTP_USER_AGENT')) {
             $userAgent = getenv('HTTP_USER_AGENT');
 
             if (preg_match('/linux/i', $userAgent)) {
@@ -68,23 +68,27 @@ trait Browser
      */
     public static function getClientBrowser()
     {
-        if(getenv('HTTP_USER_AGENT')) {
+        if (getenv('HTTP_USER_AGENT')) {
             
             $userAgent = getenv('HTTP_USER_AGENT');
             
-            if ((preg_match('/MSIE/i',$userAgent) || preg_match('/Trident/i',$userAgent)) && !preg_match('/Opera/i',$userAgent)) {
-               return 'Internet Explorer';
-            } elseif(preg_match('/Camino/i', $userAgent)) {
+            if ((
+                preg_match('/MSIE/i', $userAgent) ||
+                preg_match('/Trident/i', $userAgent)
+                ) && 
+                !preg_match('/Opera/i', $userAgent)) {
+                return 'Internet Explorer';
+            } elseif (preg_match('/Camino/i', $userAgent)) {
                 return "Camino";
-            } elseif(preg_match('/Firefox/i', $userAgent)) {
+            } elseif (preg_match('/Firefox/i', $userAgent)) {
                 return "Firefox";
-            } elseif(preg_match('/Safari/i', $userAgent)) {
+            } elseif (preg_match('/Safari/i', $userAgent)) {
                 return "Safari";
-            } elseif(preg_match('/Chrome/i', $userAgent)) {
+            } elseif (preg_match('/Chrome/i', $userAgent)) {
                 return "Chrome";
-            } elseif(preg_match('/Konqueror/i', $userAgent)) {
+            } elseif (preg_match('/Konqueror/i', $userAgent)) {
                 return "Konqueror";
-            } elseif(preg_match('/Opera/i', $userAgent)) {
+            } elseif (preg_match('/Opera/i', $userAgent)) {
                 return "Opera";
             }
         }
