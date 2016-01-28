@@ -52,7 +52,7 @@ trait Browser
             } elseif (preg_match('/macintosh|mac os x/i', $userAgent)) {
                 return'mac';
             } elseif (preg_match('/windows|win32/i', $userAgent)) {
-                return 'win';
+                return 'windows';
             }
         }
         

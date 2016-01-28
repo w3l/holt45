@@ -153,7 +153,7 @@ trait Strings
             
             if ($getClientOperatingSystem == "linux" ||
                 $getClientOperatingSystem == "mac" ||
-                $getClientOperatingSystem == "win") {
+                $getClientOperatingSystem == "windows") {
                    $inputOperatingSystem = $getClientOperatingSystem;
             }
         }
@@ -186,7 +186,7 @@ trait Strings
         "enter" => array("default" => "&#9166;", "mac" => "&#8996;"),
         "alt" => array("default" => "&#9095;", "mac" => "&#8997;"),
         "delete" => array("default" => "&#9003;"),
-        "ctrl" => array("default" => "&#10034;", "win" => "&#10034;", "linux" => "&#9096;", "mac" => "&#00094;"),
+        "ctrl" => array("default" => "&#10034;", "windows" => "&#10034;", "linux" => "&#9096;", "mac" => "&#00094;"),
         "esc" => array("default" => "&#9099;"),
         "command" => array("default" => "&#8984;"),
         "tab" => array("default" => "&#8633;", "mac" => "&#8677;"),
