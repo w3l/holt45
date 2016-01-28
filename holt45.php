@@ -6,13 +6,14 @@
  * @link http://holt45.pw/ Webpage
  * @link http://holt45.pw/docs/ Documentation of holt45
  * @copyright Unlicense
- * @version 0.4.5
+ * @version 0.4.6
  */
 
 require_once dirname(__FILE__) . '/holt45/Get.php';
 require_once dirname(__FILE__) . '/holt45/Post.php';
 require_once dirname(__FILE__) . '/holt45/Session.php';
 require_once dirname(__FILE__) . '/holt45/Time.php';
+require_once dirname(__FILE__) . '/holt45/Browser.php';
 require_once dirname(__FILE__) . '/holt45/Convert.php';
 require_once dirname(__FILE__) . '/holt45/Strings.php';
 require_once dirname(__FILE__) . '/holt45/Math.php';

@@ -27,6 +27,8 @@ trait Convert
     /**
      * Converts hexadecimal to red-green-blue(RGB)
      *
+     * @used-by Holt45::rainbowText();
+     *
      * @param string $hex Hexadecimal color
      * @return null|int[] RGB color
      */
@@ -53,6 +55,8 @@ trait Convert
 
     /**
      * Converts hexadecimal to red-green-blue(RGB)
+     *
+     * @used-by Holt45::rainbowText();
      *
      * @param array $arrayRGB RGB color
      * @param array $arrayRGB2 RGB color

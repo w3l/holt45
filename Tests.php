@@ -49,10 +49,19 @@ class Tests extends \Holt45
 
         echo self::timeElapsed("1980-01-01 17:15:00"); // 13173 days
 
+        /* Browser */
+        echo self::getClientIpAddress(); // 127.0.0.1
+        
+        echo self::getClientOperatingSystem(); // linux
+        
+        echo self::getClientBrowser(); // Firefox
+        
         /* Convert */
         echo self::rgbhex(array(255, 0, 0)); // ff0000
 
         print_r(self::hexrgb("#FF0000")); // Array([0] => 255, [1] => 0, [2] => 0)
+        
+        print_r(self::colorBlend(array(0, 0, 0), array(255, 255, 255))); // Array ( [0] => 128 [1] => 128 [2] => 128 )
 
         /* Strings */
         echo self::textareaEncode('<textarea id="tex1"></textarea> <p> asdasd </p>'); // [textarea id="tex1"][/textarea] <p> asdasd </p>
@@ -66,13 +75,15 @@ class Tests extends \Holt45
         echo self::replaceString("Hi my name is [@foo] and i like [@bar]", array("foo" => "sven", "bar" => "beer")); // Hi my name is sven and i like beer
 
         echo self::rainbowText("Hallo world"); // <span style="color: #ff0000;">H</span><span style="color: #ff3300;">a</span>...
+        
+        echo self::kbdSymbol("enter"); // &#9166;
+
+        echo self::kbdShortcut(array("Ctrl", "Alt", "Delete"), "auto"); // <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#10034;</span>Ctrl</kbd> + <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#9095;</span>Alt</kbd> + <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#9003;</span>Delete</kbd>
 
         /* Math */
         print_r(self::generatePaginationRange(106, 15, 7)); // Array([0] => 1, [1] => 13, [2] => 14, [3] => 15, [4] => 16, [5] => 17, [6] => 106)
 
         /* Misc */
-        echo self::getClientIpAddress(); // 127.0.0.1
-
         print_r(self::urlParser("htt://w.google..com/")); // Array([url] => http://www.google.com/, [url_display] => www.google.com)
 
         echo self::generatePassword(10); // 2k%=cbot:w

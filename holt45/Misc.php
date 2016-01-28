@@ -25,29 +25,6 @@ trait Misc
     }
 
     /**
-     * Get client ip-address
-     *
-     * @return string User ip-address
-     */
-    public static function getClientIpAddress()
-    {
-        if (getenv('HTTP_CLIENT_IP')) {
-            return getenv('HTTP_CLIENT_IP');
-        } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
-            return getenv('HTTP_X_FORWARDED_FOR');
-        } elseif (getenv('HTTP_X_FORWARDED')) {
-            return getenv('HTTP_X_FORWARDED');
-        } elseif (getenv('HTTP_FORWARDED_FOR')) {
-            return getenv('HTTP_FORWARDED_FOR');
-        } elseif (getenv('HTTP_FORWARDED')) {
-            return getenv('HTTP_FORWARDED');
-        } elseif (getenv('REMOTE_ADDR')) {
-            return getenv('REMOTE_ADDR');
-        }
-        return '127.0.0.1'; // Unknown IP
-    }
-
-    /**
      * Tries to auto-correct parse_url()-output.
      *
      * @used-by Holt45::autoCorrectParseUrl()

@@ -24,6 +24,7 @@ EOD;
     use \w3l\Holt45\Post;
     use \w3l\Holt45\Session;
     use \w3l\Holt45\Time;
+    use \w3l\Holt45\Browser;
     use \w3l\Holt45\Convert;
     use \w3l\Holt45\Strings;
     use \w3l\Holt45\Math;

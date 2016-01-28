@@ -55,9 +55,14 @@ Generated API documentation is found [here](http://holt45.pw/docs)
 * Time
   * timestampToHttpDate()
   * timeElapsed()
+* Browser
+  * getClientIpAddress()
+  * getClientOperatingSystem()
+  * getClientBrowser()
 * Convert
   * rgbhex()
   * hexrgb()
+  * colorBlend()
 * Strings
   * textareaEncode()
   * textareaDecode()
@@ -65,6 +70,8 @@ Generated API documentation is found [here](http://holt45.pw/docs)
   * deobfuscateString()
   * replaceString()
   * rainbowText()
+  * kbdSymbol()
+  * kbdShortcut()
 * Math
   * generatePaginationRange()
 * Misc
@@ -107,10 +114,19 @@ echo holt45::timestampToHttpDate("1980-01-01 17:15:00"); // Tue, 01 Jan 1980 16:
 
 echo holt45::timeElapsed("1980-01-01 17:15:00"); // 13173 days
 
+/* Browser */
+echo holt45::getClientIpAddress(); // 127.0.0.1
+
+echo holt45::getClientOperatingSystem(); // linux
+
+echo holt45::getClientBrowser(); // Firefox
+        
 /* Convert */
 echo holt45::rgbhex(array(255, 0, 0)); // ff0000
 
 print_r(holt45::hexrgb("#FF0000")); // Array([0] => 255, [1] => 0, [2] => 0)
+
+print_r(holt45::colorBlend(array(0, 0, 0), array(255, 255, 255))); // Array ( [0] => 128 [1] => 128 [2] => 128 )
 
 /* Strings */
 echo holt45::textareaEncode('<textarea id="tex1"></textarea> <p> asdasd </p>'); // [textarea id="tex1"][/textarea] <p> asdasd </p>
@@ -125,12 +141,14 @@ echo holt45::replaceString("Hi my name is [@foo] and i like [@bar]", array("foo"
 
 echo holt45::rainbowText("Hallo world"); // <span style="color: #ff0000;">H</span><span style="color: #ff3300;">a</span>...
 
+echo holt45::kbdSymbol("enter"); // &#9166;
+
+echo holt45::kbdShortcut(array("Ctrl", "Alt", "Delete"), "auto"); // <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#10034;</span>Ctrl</kbd> + <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#9095;</span>Alt</kbd> + <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#9003;</span>Delete</kbd>
+
 /* Math */
 print_r(holt45::generatePaginationRange(106, 15, 7)); // Array([0] => 1, [1] => 13, [2] => 14, [3] => 15, [4] => 16, [5] => 17, [6] => 106)
 
 /* Misc */
-echo holt45::getClientIpAddress(); // 127.0.0.1
-
 print_r(holt45::urlParser("htt://w.google..com/")); // Array([url] => http://www.google.com/, [url_display] => www.google.com)
 
 echo holt45::generatePassword(10); // 2k%=cbot:w

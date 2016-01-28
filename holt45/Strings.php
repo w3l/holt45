@@ -131,4 +131,122 @@ trait Strings
         }
         return $returnText;
     }
+    
+    /**
+     * Get the symbol from a list of keyboard-keys...
+     *
+     * @used-by Holt45::kbdShortcut()
+     *
+     * @param string $inputKey Text
+     * @param string $inputOperatingSystem default|auto|win|mac|linux
+     * @return null|string HTML Entity (decimal)
+     */
+    public static function kbdSymbol($inputKey, $inputOperatingSystem = "default")
+    {
+        $inputKey = mb_strtolower($inputKey);
+        
+        if ($inputOperatingSystem == "auto") {
+            
+            $inputOperatingSystem = "default";
+            
+            $getClientOperatingSystem = self::getClientOperatingSystem();
+            
+            if ($getClientOperatingSystem == "linux" ||
+                $getClientOperatingSystem == "mac" ||
+                $getClientOperatingSystem == "win") {
+                   $inputOperatingSystem = $getClientOperatingSystem;
+            }
+        }
+        
+        $arrayConvert = array(
+        "return" => "enter",
+        "control" => "ctrl",
+        "escape" => "esc",
+        "caps lock" => "caps-lock",
+        "page up" => "page-up",
+        "page down" => "page-down",
+        "arrow left" => "arrow-left",
+        "left" => "arrow-left",
+        "arrow up" => "arrow-up",
+        "up" => "arrow-up",
+        "arrow right" => "arrow-right",
+        "right" => "arrow-right",
+        "arrow down" => "arrow-down",
+        "down" => "arrow-down"
+        );
+        
+        /* Convert input */
+        if (array_key_exists($inputKey, $arrayConvert)) {
+            $inputKey = $arrayConvert[$inputKey];
+        }
+
+        $arrayKeySymbols = array(
+        "shift" => array("default" => "&#8679;"),
+        "opt" => array("default" => "&#8997;"),
+        "enter" => array("default" => "&#9166;", "mac" => "&#8996;"),
+        "alt" => array("default" => "&#9095;", "mac" => "&#8997;"),
+        "delete" => array("default" => "&#9003;"),
+        "ctrl" => array("default" => "&#10034;", "win" => "&#10034;", "linux" => "&#9096;", "mac" => "&#00094;"),
+        "esc" => array("default" => "&#9099;"),
+        "command" => array("default" => "&#8984;"),
+        "tab" => array("default" => "&#8633;", "mac" => "&#8677;"),
+        "caps-lock" => array("default" => "&#65;", "mac" => "&#8682;"),
+        "page-up" => array("default" => "&#9650;", "mac" => "&#8670;"),
+        "page-down" => array("default" => "&#9660;", "mac" => "&#8671;"),
+        "arrow-left" => array("default" => "&#8592;"),
+        "arrow-up" => array("default" => "&#8593;"),
+        "arrow-right" => array("default" => "&#8594;"),
+        "arrow-down" => array("default" => "&#8595;"),
+        // Sun
+        "compose" => array("default" => "&#9092;"),
+        "meta" => array("default" => "&#9670")
+        );
+        
+        if (array_key_exists($inputKey, $arrayKeySymbols)) {
+            
+            return ((array_key_exists($inputOperatingSystem, $arrayKeySymbols[$inputKey])) ?
+                                      $arrayKeySymbols[$inputKey][$inputOperatingSystem] :
+                                      $arrayKeySymbols[$inputKey]["default"]);
+        }
+        
+        return null;
+    }
+
+    /**
+     * Show fancy buttons for keyboard-shortcuts.
+     *
+     * @uses Holt45::kbdSymbol()
+     *
+     * @param array $inputArrayKeys
+     * @param string $inputOperatingSystem
+     * @param string $inputKbdClass
+     * @param string $inputKbdSymbolClass
+     * @param string $inputJoinGlue Glue
+     * @return string String of html
+     */
+    public static function kbdShortcut(
+        $inputArrayKeys,
+        $inputOperatingSystem = "default",
+        $inputKbdClass = "holt45-kbd",
+        $inputKbdSymbolClass = "holt45-kbd__symbol",
+        $inputJoinGlue = " + "
+    ) {
+        $returnArray = array();
+
+        foreach ($inputArrayKeys as $key) {
+            
+            $kbdSymbol = self::kbdSymbol($key, $inputOperatingSystem);
+            
+            $kbdSymbolHtml = "";
+            
+            if ($kbdSymbol !== null) {
+                $kbdSymbolHtml = '<span class="'.$inputKbdSymbolClass.'">'.$kbdSymbol.'</span>';
+            }
+            
+            $returnArray[] = '<kbd class="'.$inputKbdClass.'">'.$kbdSymbolHtml.$key.'</kbd>';
+            
+        }
+
+        return implode($inputJoinGlue, $returnArray);
+    }
 }
