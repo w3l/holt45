@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests.php 
+ * Tests.php
  * @ignore
  */
 namespace w3l\Holt45\Tests;
@@ -56,7 +56,7 @@ class Tests extends \Holt45
         
         echo self::getClientBrowser(); // Firefox
         
-        if(self::isClientBrowserGoogleChrome()) {
+        if (self::isClientBrowserGoogleChrome()) {
             echo 'Looks like Google Chrome';
         }
         

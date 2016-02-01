@@ -110,7 +110,8 @@ trait Browser
             
             $userAgent = getenv('HTTP_USER_AGENT');
             
-            if(preg_match('/(Chrome|CriOS)\//i',$userAgent) && !preg_match('/(Aviator|brave|ChromePlus|coc_|Dragon|Edge|Flock|Iron|Kinza|Maxthon|MxNitro|Nichrome|OPR|Perk|Rockmelt|Seznam|Sleipnir|Spark|UBrowser|Vivaldi|WebExplorer|YaBrowser)/i',$userAgent)){
+            if (preg_match('/(Chrome|CriOS)\//i', $userAgent) && 
+                !preg_match('/(Aviator|brave|ChromePlus|coc_|Dragon|Edge|Flock|Iron|Kinza|Maxthon|MxNitro|Nichrome|OPR|Perk|Rockmelt|Seznam|Sleipnir|Spark|UBrowser|Vivaldi|WebExplorer|YaBrowser)/i', $userAgent)) {
                 return true;
             }
         }
