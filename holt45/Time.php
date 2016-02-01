@@ -29,31 +29,35 @@ trait Time
      * Convert timestamp to x unit(plural), like "6 minutes" or "1 day".
      *
      * @param string $timestamp
+     * @param string $lang Language
      * @return string Formated time: "x unit(s)" or empty string
      */
-    public static function timeElapsed($timestamp)
+    public static function timeElapsed($timestamp, $lang = "en")
     {
+        $arrayLanguages = array(
+        "sv" => array("s" => ["sekund", "sekunder"], "m" => ["minut", "minuter"], "h" => ["timme", "timmar"], "d" => ["dag", "dagar"]),
+        "en" => array("s" => ["second", "seconds"], "m" => ["minute", "minutes"], "h" => ["hour", "hours"], "d" => ["day", "days"])
+        );
+        
         $seconds = max((time() - strtotime($timestamp)), 0);
 
         if ($seconds < 60) {
             $number = $seconds;
-            $text = "second";
+            $key = "s";
         } elseif ($seconds < (60 * 60)) {
             $number = $seconds / 60;
-            $text = "minute";
+            $key = "m";
         } elseif ($seconds < (60 * 60 * 24)) {
             $number = $seconds / (60 * 60);
-            $text = "hour";
+            $key = "h";
         } else {
             $number = $seconds / (60 * 60 * 24);
-            $text = "day";
+            $key = "d";
         }
 
         $number = floor($number);
 
-        if ($number > 1) {
-            $text.="s";
-        }
+        $text = $arrayLanguages[$lang][$key][(($number > 1) ? 1 : 0)];
 
         return "$number $text";
     }
