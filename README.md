@@ -59,6 +59,7 @@ Generated API documentation is found [here](http://holt45.pw/docs)
   * getClientIpAddress()
   * getClientOperatingSystem()
   * getClientBrowser()
+  * isClientBrowserGoogleChrome()
 * Convert
   * rgbhex()
   * hexrgb()
