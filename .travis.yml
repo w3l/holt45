@@ -8,3 +8,8 @@ php:
   - nightly
 
 script: phpunit Tests.php
+
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
