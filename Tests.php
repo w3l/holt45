@@ -56,6 +56,10 @@ class Tests extends \Holt45
         
         echo self::getClientBrowser(); // Firefox
         
+        if(self::isClientBrowserGoogleChrome()) {
+            echo 'Looks like Google Chrome';
+        }
+        
         /* Convert */
         echo self::rgbhex(array(255, 0, 0)); // ff0000
 
