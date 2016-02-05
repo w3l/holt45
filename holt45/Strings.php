@@ -261,25 +261,24 @@ trait Strings
      * @param int $minPageWidthPx
      * @return null|string Scoped style
      */
-	public static function cssOneLineText($text, $cssSelector = "h1", $fontSizePx = 36, $minPageWidthPx = 320) {
-		
-		$countText = strlen($text)+1;
-		
-		$fontWidth = ($fontSizePx / 2);
-		
-		if($minPageWidthPx < $countText) {
-			$minPageWidthPx = $countText;
-		}
-		if(($countText * $fontWidth) > $minPageWidthPx) {
-		
-			$cssNewFontSizePx = round(($minPageWidthPx / $countText) * 2, 2);
-			$cssNewFontSizeVw = round((100/$countText) * 2, 2);
-			
-			$cssBreakpointPx = round($countText * $fontWidth);
-			
-			return '<style scoped>@media (max-width: '.$cssBreakpointPx.'px) { '.$cssSelector.' { font-size: '.$cssNewFontSizePx.'px; font-size: '.$cssNewFontSizeVw.'vw; } }</style>';
-		}
-		
-		return null;
-	}
+    public static function cssOneLineText($text, $cssSelector = "h1", $fontSizePx = 36, $minPageWidthPx = 320)
+    {
+        $countText = strlen($text)+1;
+
+        $fontWidth = ($fontSizePx / 2);
+
+        if ($minPageWidthPx < $countText) {
+            $minPageWidthPx = $countText;
+        }
+        if (($countText * $fontWidth) > $minPageWidthPx) {
+
+            $cssNewFontSizePx = round(($minPageWidthPx / $countText) * 2, 2);
+            $cssNewFontSizeVw = round((100/$countText) * 2, 2);
+
+            $cssBreakpointPx = round($countText * $fontWidth);
+
+            return '<style scoped>@media (max-width: '.$cssBreakpointPx.'px) { '.$cssSelector.' { font-size: '.$cssNewFontSizePx.'px; font-size: '.$cssNewFontSizeVw.'vw; } }</style>';
+        }
+        return null;
+    }
 }
