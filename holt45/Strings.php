@@ -249,7 +249,7 @@ trait Strings
 
         return implode($inputJoinGlue, $returnArray);
     }
-	
+
     /**
      * Attempting to keep CSS on one line with scoped style.
      *
