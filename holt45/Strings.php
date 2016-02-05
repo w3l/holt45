@@ -249,4 +249,36 @@ trait Strings
 
         return implode($inputJoinGlue, $returnArray);
     }
+
+    /**
+     * Attempting to keep CSS on one line with scoped style.
+     *
+     * NOTICE: This is a rough estimate, font type, design, etc affects the results.
+     *
+     * @param string $text
+     * @param string $cssSelector
+     * @param int $fontSizePx
+     * @param int $minPageWidthPx
+     * @return null|string Scoped style
+     */
+    public static function cssOneLineText($text, $cssSelector = "h1", $fontSizePx = 36, $minPageWidthPx = 320)
+    {
+        $countText = strlen($text)+1;
+
+        $fontWidth = ($fontSizePx / 2);
+
+        if ($minPageWidthPx < $countText) {
+            $minPageWidthPx = $countText;
+        }
+        if (($countText * $fontWidth) > $minPageWidthPx) {
+
+            $cssNewFontSizePx = round(($minPageWidthPx / $countText) * 2, 2);
+            $cssNewFontSizeVw = round((100/$countText) * 2, 2);
+
+            $cssBreakpointPx = round($countText * $fontWidth);
+
+            return '<style scoped>@media (max-width: '.$cssBreakpointPx.'px) { '.$cssSelector.' { font-size: '.$cssNewFontSizePx.'px; font-size: '.$cssNewFontSizeVw.'vw; } }</style>';
+        }
+        return null;
+    }
 }

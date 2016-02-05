@@ -6,7 +6,7 @@
  * @link http://holt45.pw/ Webpage
  * @link http://holt45.pw/docs/ Documentation of holt45
  * @copyright Unlicense
- * @version 0.4.6
+ * @version 0.4.9
  */
 
 require_once dirname(__FILE__) . '/holt45/Get.php';
