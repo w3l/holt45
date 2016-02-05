@@ -86,6 +86,8 @@ class Tests extends \Holt45
 
         echo self::kbdShortcut(array("Ctrl", "Alt", "Delete"), "auto"); // <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#10034;</span>Ctrl</kbd> + <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#9095;</span>Alt</kbd> + <kbd class="holt45-kbd"><span class="holt45-kbd__symbol">&#9003;</span>Delete</kbd>
 
+		echo self::cssOneLineText("hallo world!", "h1", 80, 320);
+		
         /* Math */
         $arr = self::generatePaginationRange(106, 15, 7); // Array([0] => 1, [1] => 13, [2] => 14, [3] => 15, [4] => 16, [5] => 17, [6] => 106)
         echo $arr[0];
