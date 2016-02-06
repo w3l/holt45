@@ -26,7 +26,7 @@ trait Strings
     public static function encrypt($string, $key)
     {
         if (!extension_loaded('mcrypt')) {
-            throw new Exception('mcrypt not loaded');
+            throw new Holt45Exception('mcrypt not loaded');
         }
 
         $initializationVector = mcrypt_create_iv(
