@@ -21,6 +21,9 @@
     "require-dev": {
         "phpdocumentor/phpdocumentor": "*"
     },
+    "suggest": {
+        "ext-mcrypt": "Needed for encrypt/decrypt functions..."
+    },
     "autoload": {
         "files": ["holt45.php"]
     }
