@@ -35,8 +35,14 @@ trait Time
     public static function timeElapsed($timestamp, $lang = "en")
     {
         $arrayLanguages = array(
-        "sv" => array("s" => ["sekund", "sekunder"], "m" => ["minut", "minuter"], "h" => ["timme", "timmar"], "d" => ["dag", "dagar"]),
-        "en" => array("s" => ["second", "seconds"], "m" => ["minute", "minutes"], "h" => ["hour", "hours"], "d" => ["day", "days"])
+        "sv" => array("s" => ["sekund", "sekunder"],
+                      "m" => ["minut", "minuter"],
+                      "h" => ["timme", "timmar"],
+                      "d" => ["dag", "dagar"]),
+        "en" => array("s" => ["second", "seconds"],
+                      "m" => ["minute", "minutes"],
+                      "h" => ["hour", "hours"],
+                      "d" => ["day", "days"])
         );
         
         $seconds = max((time() - strtotime($timestamp)), 0);

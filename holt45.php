@@ -9,6 +9,8 @@
  * @version 0.4.9
  */
 
+require_once dirname(__FILE__) . '/holt45/Holt45Exception.php';
+ 
 require_once dirname(__FILE__) . '/holt45/Get.php';
 require_once dirname(__FILE__) . '/holt45/Post.php';
 require_once dirname(__FILE__) . '/holt45/Session.php';
