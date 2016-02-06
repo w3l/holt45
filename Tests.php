@@ -72,7 +72,7 @@ class Tests extends \Holt45
         /* Strings */
         try {
             echo self::encrypt("some text", "pazz11!!klb"); // vZp3TdnGAY6/NPgM9sz3qUW24nTbthX+mHdqG7BWCDJVnmqWcz6IMEAs9sqcaVD0Efv4iXSIulUmlrp+E6Z0/w==
-        } catch (Exception $e) {
+        } catch (\w3l\Holt45\Holt45Exception $e) {
             echo 'Caught exception: ',  $e->getMessage();
         }
 
