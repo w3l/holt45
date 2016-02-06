@@ -16,6 +16,8 @@ trait Strings
      * use a purpose built package. https://github.com/defuse/php-encryption seems like a good candidate.
      * @deprecated Do not trust a two-line encryption-method.
      *
+     * @throws Exception if extension mcrypt is not loaded.
+     *
      * @param string $string String to encrypt
      * @param string $key Key to encrypt/decrypt.
      * @return string Encrypted string
