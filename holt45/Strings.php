@@ -29,15 +29,19 @@ trait Strings
             throw new Exception('mcrypt not loaded');
         }
 
-        $initializationVector = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
-                                                                    MCRYPT_MODE_ECB),
-                                                 MCRYPT_DEV_URANDOM);
+        $initializationVector = mcrypt_create_iv(
+                                mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
+                                                   MCRYPT_MODE_ECB),
+                                MCRYPT_DEV_URANDOM
+                                );
         
-        $encryptedString = $initializationVector.mcrypt_encrypt(MCRYPT_RIJNDAEL_256,
-                                                                hash("sha256", $key, true),
-                                                                $string,
-                                                                MCRYPT_MODE_CBC,
-                                                                $initializationVector);
+        $encryptedString = $initializationVector.mcrypt_encrypt(
+                                                 MCRYPT_RIJNDAEL_256,
+                                                 hash("sha256", $key, true),
+                                                 $string,
+                                                 MCRYPT_MODE_CBC,
+                                                 $initializationVector
+                                                 );
      
         return base64_encode($encryptedString);
     }
@@ -58,18 +62,22 @@ trait Strings
     {
         $encryptedString = base64_decode($string);
        
-        $initializationVector = substr($encryptedString,
-                                       0,
-                                       mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
-                                                          MCRYPT_MODE_ECB));
+        $initializationVector = substr(
+                                $encryptedString,
+                                0,
+                                mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
+                                                   MCRYPT_MODE_ECB)
+                                );
         
-        $decryptedString = mcrypt_decrypt(MCRYPT_RIJNDAEL_256,
-                                          hash("sha256", $key, true),
-                                          substr($encryptedString,
-                                                 mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
-                                                                    MCRYPT_MODE_ECB)),
-                                          MCRYPT_MODE_CBC,
-                                          $initializationVector);
+        $decryptedString = mcrypt_decrypt(
+                           MCRYPT_RIJNDAEL_256,
+                           hash("sha256", $key, true),
+                           substr($encryptedString,
+                                  mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
+                                                     MCRYPT_MODE_ECB)),
+                           MCRYPT_MODE_CBC,
+                           $initializationVector
+                           );
         
         return $decryptedString;
     }
@@ -214,12 +222,12 @@ trait Strings
             
             $inputOperatingSystem = "default";
             
-            $getClientOperatingSystem = self::getClientOperatingSystem();
+            $getClientOS = self::getClientOperatingSystem();
             
-            if ($getClientOperatingSystem == "linux" ||
-                $getClientOperatingSystem == "mac" ||
-                $getClientOperatingSystem == "windows") {
-                   $inputOperatingSystem = $getClientOperatingSystem;
+            if ($getClientOS == "linux" ||
+                $getClientOS == "mac" ||
+                $getClientOS == "windows") {
+                   $inputOperatingSystem = $getClientOS;
             }
         }
         
