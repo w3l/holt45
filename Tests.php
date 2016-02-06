@@ -70,6 +70,14 @@ class Tests extends \Holt45
         print "R: $arr[0] G: $arr[1] B: $arr[2]";
         
         /* Strings */
+        try {
+            echo self::encrypt("some text", "pazz11!!klb"); // vZp3TdnGAY6/NPgM9sz3qUW24nTbthX+mHdqG7BWCDJVnmqWcz6IMEAs9sqcaVD0Efv4iXSIulUmlrp+E6Z0/w==
+        } catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage();
+        }
+
+        echo self::decrypt("vZp3TdnGAY6/NPgM9sz3qUW24nTbthX+mHdqG7BWCDJVnmqWcz6IMEAs9sqcaVD0Efv4iXSIulUmlrp+E6Z0/w==", "pazz11!!klb"); // some text
+        
         echo self::textareaEncode('<textarea id="tex1"></textarea> <p> asdasd </p>'); // [textarea id="tex1"][/textarea] <p> asdasd </p>
 
         echo self::textareaDecode('[textarea id="tex1"][/textarea] <p> asdasd </p>'); // <textarea id="tex1"></textarea> <p> asdasd </p>

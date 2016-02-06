@@ -65,6 +65,8 @@ Generated API documentation is found [here](http://holt45.pw/docs)
   * hexrgb()
   * colorBlend()
 * Strings
+  * encrypt()
+  * decrypt()
   * textareaEncode()
   * textareaDecode()
   * obfuscateString()
@@ -131,6 +133,10 @@ print_r(holt45::hexrgb("#FF0000")); // Array([0] => 255, [1] => 0, [2] => 0)
 print_r(holt45::colorBlend(array(0, 0, 0), array(255, 255, 255))); // Array ( [0] => 128 [1] => 128 [2] => 128 )
 
 /* Strings */
+echo holt45::encrypt("some text", "pazz11!!klb"); // vZp3TdnGAY6/NPgM9sz3qUW24nTbthX+mHdqG7BWCDJVnmqWcz6IMEAs9sqcaVD0Efv4iXSIulUmlrp+E6Z0/w==
+
+echo holt45::decrypt("vZp3TdnGAY6/NPgM9sz3qUW24nTbthX+mHdqG7BWCDJVnmqWcz6IMEAs9sqcaVD0Efv4iXSIulUmlrp+E6Z0/w==", "pazz11!!klb"); // some text
+
 echo holt45::textareaEncode('<textarea id="tex1"></textarea> <p> asdasd </p>'); // [textarea id="tex1"][/textarea] <p> asdasd </p>
 
 echo holt45::textareaDecode('[textarea id="tex1"][/textarea] <p> asdasd </p>'); // <textarea id="tex1"></textarea> <p> asdasd </p>

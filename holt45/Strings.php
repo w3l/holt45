@@ -10,6 +10,51 @@ namespace w3l\Holt45;
 trait Strings
 {
     /**
+     * Encrypt string
+     *
+     * NOTICE: the code in general, this method in particular, comes with absolutely no warranty. If security is important for you, then 
+     * use a purpose built package. https://github.com/defuse/php-encryption seems like a good candidate.
+     * @deprecated Do not trust a two-line encryption-method.
+     *
+     * @param string $string String to encrypt
+     * @param string $key Key to encrypt/decrypt.
+     * @return string Encrypted string
+     */
+    public static function encrypt($string, $key) {
+
+        if (!extension_loaded('mcrypt')) {
+            throw new Exception('mcrypt not loaded');
+        }
+
+        $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_DEV_URANDOM);
+        
+        $encryptedString = $iv.mcrypt_encrypt(MCRYPT_RIJNDAEL_256, hash("sha256", $key, true), $string, MCRYPT_MODE_CBC, $iv);
+     
+        return base64_encode($encryptedString);
+    }
+    
+    /**
+     * Decrypt string
+     *
+     * NOTICE: the code in general, this method in particular, comes with absolutely no warranty. If security is important for you, then 
+     * use a purpose built package. https://github.com/defuse/php-encryption seems like a good candidate.
+     * @deprecated Do not trust a two-line decryption-method.
+     *
+     * @param string $string String to decrypt
+     * @param string $key Key to encrypt/decrypt.
+     * @return string Decrypted string
+     */
+    public static function decrypt($string, $key) {
+        $encryptedString = base64_decode($string);
+       
+        $iv = substr($encryptedString, 0, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB));
+        
+        $decryptedString = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, hash("sha256", $key, true), substr($encryptedString, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB)), MCRYPT_MODE_CBC, $iv);
+        
+        return $decryptedString;
+    }
+
+    /**
      * Obfuscate string (url-safe and somewhat hard to guess).
      *
      * @param string $input The text that should be obfuscated
