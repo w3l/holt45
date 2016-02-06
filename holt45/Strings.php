@@ -30,18 +30,20 @@ trait Strings
         }
 
         $initializationVector = mcrypt_create_iv(
-                                mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
-                                                   MCRYPT_MODE_ECB),
-                                MCRYPT_DEV_URANDOM
-                                );
+            mcrypt_get_iv_size(
+                                MCRYPT_RIJNDAEL_256,
+                                MCRYPT_MODE_ECB
+                                ),
+            MCRYPT_DEV_URANDOM
+            );
         
         $encryptedString = $initializationVector.mcrypt_encrypt(
-                                                 MCRYPT_RIJNDAEL_256,
-                                                 hash("sha256", $key, true),
-                                                 $string,
-                                                 MCRYPT_MODE_CBC,
-                                                 $initializationVector
-                                                 );
+             MCRYPT_RIJNDAEL_256,
+             hash("sha256", $key, true),
+             $string,
+             MCRYPT_MODE_CBC,
+             $initializationVector
+             );
      
         return base64_encode($encryptedString);
     }
@@ -70,14 +72,18 @@ trait Strings
                                 );
         
         $decryptedString = mcrypt_decrypt(
-                           MCRYPT_RIJNDAEL_256,
-                           hash("sha256", $key, true),
-                           substr($encryptedString,
-                                  mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256,
-                                                     MCRYPT_MODE_ECB)),
-                           MCRYPT_MODE_CBC,
-                           $initializationVector
-                           );
+            MCRYPT_RIJNDAEL_256,
+            hash("sha256", $key, true),
+            substr(
+                $encryptedString,
+                mcrypt_get_iv_size(
+                    MCRYPT_RIJNDAEL_256,
+                    MCRYPT_MODE_ECB
+                    )
+                ),
+            MCRYPT_MODE_CBC,
+            $initializationVector
+            );
         
         return $decryptedString;
     }
