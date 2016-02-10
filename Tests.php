@@ -115,5 +115,8 @@ class Tests extends \Holt45
         echo self::DATA_URI_TRANSPARENT_GIF; // data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
 
         echo self::DATA_URI_TRANSPARENT_PNG; // data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=
+        
+        /* global constants */
+        echo date(DATE_DATETIME);
     }
 }

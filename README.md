@@ -86,6 +86,8 @@ Generated API documentation is found [here](http://holt45.pw/docs)
 * constants
   * DATA_URI_TRANSPARENT_GIF
   * DATA_URI_TRANSPARENT_PNG
+* constants(global)
+  * DATE_DATETIME
 
 ### Example code:
 ```php

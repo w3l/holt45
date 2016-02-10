@@ -31,3 +31,8 @@ EOD;
     use \w3l\Holt45\MiscData;
     use \w3l\Holt45\Misc;
 }
+
+/**
+ * Constants loaded outside class.
+ */
+defined('DATE_DATETIME') || define('DATE_DATETIME', 'Y-m-d H:i:s');

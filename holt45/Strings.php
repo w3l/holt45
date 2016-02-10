@@ -68,9 +68,9 @@ trait Strings
             $encryptedString,
             0,
             mcrypt_get_iv_size(
-                                MCRYPT_RIJNDAEL_256,
-                                MCRYPT_MODE_ECB
-                            )
+                MCRYPT_RIJNDAEL_256,
+                MCRYPT_MODE_ECB
+            )
         );
 
         $decryptedString = mcrypt_decrypt(
@@ -81,7 +81,7 @@ trait Strings
                 mcrypt_get_iv_size(
                     MCRYPT_RIJNDAEL_256,
                     MCRYPT_MODE_ECB
-                    )
+                )
             ),
             MCRYPT_MODE_CBC,
             $initializationVector
