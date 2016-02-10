@@ -10,7 +10,7 @@ require_once dirname(__FILE__) . '/holt45.php';
 class Tests extends \Holt45
 {
     public function allTests()
-    {   
+    {
         /* $_GET */
         if (self::chkGet("q")) {
             echo '$_GET["q"] is set';

@@ -35,4 +35,4 @@ EOD;
 /**
  * Constants loaded outside class.
  */
-defined('DATE_DATETIME') or define('DATE_DATETIME', 'Y-m-d H:i:s');
+defined('DATE_DATETIME') || define('DATE_DATETIME', 'Y-m-d H:i:s');
