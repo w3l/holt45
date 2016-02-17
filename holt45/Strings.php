@@ -73,7 +73,8 @@ trait Strings
             )
         );
 
-        $decryptedString = mcrypt_decrypt(
+        $decryptedString = rtrim(
+            mcrypt_decrypt(
             MCRYPT_RIJNDAEL_256,
             hash("sha256", $key, true),
             substr(
@@ -85,7 +86,8 @@ trait Strings
             ),
             MCRYPT_MODE_CBC,
             $initializationVector
-        );
+            ), 
+        "\0");
         
         return $decryptedString;
     }
