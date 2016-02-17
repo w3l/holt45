@@ -86,8 +86,9 @@ trait Strings
             ),
             MCRYPT_MODE_CBC,
             $initializationVector
-            ), 
-        "\0");
+            ),
+            "\0"
+        );
         
         return $decryptedString;
     }
