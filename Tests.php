@@ -60,8 +60,8 @@ class Tests extends \Holt45
             echo 'Looks like Google Chrome';
         }
         
-        if ($results = holt45::kbdShortcut(getBrowserAccessKeyModifiers("1"))) {
-            $results[0]; // Alt
+        if ($results = self::getBrowserAccessKeyModifiers("1")) {
+            $results[0]; // array([0] => "Alt", [1] => "Shift", [2] => "1");
         }
         
         /* Convert */

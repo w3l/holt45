@@ -126,13 +126,16 @@ trait Browser
      *
      * @link https://en.wikipedia.org/wiki/Access_key Source
      *
-     * @param string $accessKey
+     * @param string|null $accessKey
      * @param string $getClientBrowser
      * @param string $getClientOperatingSystem
      * @return array|null
      */
-    public static function getBrowserAccessKeyModifiers($accessKey = null, $getClientBrowser = "auto", $getClientOperatingSystem = "auto")
-    {
+    public static function getBrowserAccessKeyModifiers(
+        $accessKey = null,
+        $getClientBrowser = "auto",
+        $getClientOperatingSystem = "auto"
+    ) {
         if ($getClientBrowser == "auto") {
             $getClientBrowser = self::getClientBrowser();
         }
