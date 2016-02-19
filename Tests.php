@@ -18,7 +18,7 @@ class Tests extends \Holt45
 
         echo self::assignFromGet("q"); // "" or $_GET["q"]
 
-        if (self::chkGetAll(array("q", "search"))) {
+        if (self::chkGetAll("q", "search")) {
             echo '$_GET["q"] and $_GET["search"] is set';
         }
 
@@ -29,7 +29,7 @@ class Tests extends \Holt45
 
         echo self::assignFromPost("q"); // "" or $_POST["q"]
 
-        if (self::chkPostAll(array("q", "search"))) {
+        if (self::chkPostAll("q", "search")) {
             echo '$_POST["q"] and $_POST["search"] is set';
         }
 
@@ -60,8 +60,12 @@ class Tests extends \Holt45
             echo 'Looks like Google Chrome';
         }
         
+        if ($results = holt45::kbdShortcut(getBrowserAccessKeyModifiers("1"))) {
+            $results[0]; // Alt
+        }
+        
         /* Convert */
-        echo self::rgbhex(array(255, 0, 0)); // ff0000
+        echo self::rgbhex(255, 0, 0); // ff0000
 
         $arr = self::hexrgb("#FF0000"); // Array([0] => 255, [1] => 0, [2] => 0)
         print "R: $arr[0] G: $arr[1] B: $arr[2]";
