@@ -75,17 +75,17 @@ trait Strings
 
         $decryptedString = rtrim(
             mcrypt_decrypt(
-            MCRYPT_RIJNDAEL_256,
-            hash("sha256", $key, true),
-            substr(
-                $encryptedString,
-                mcrypt_get_iv_size(
-                    MCRYPT_RIJNDAEL_256,
-                    MCRYPT_MODE_ECB
-                )
-            ),
-            MCRYPT_MODE_CBC,
-            $initializationVector
+                MCRYPT_RIJNDAEL_256,
+                hash("sha256", $key, true),
+                substr(
+                    $encryptedString,
+                    mcrypt_get_iv_size(
+                        MCRYPT_RIJNDAEL_256,
+                        MCRYPT_MODE_ECB
+                    )
+                ),
+                MCRYPT_MODE_CBC,
+                $initializationVector
             ),
             "\0"
         );
