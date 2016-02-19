@@ -60,7 +60,6 @@ trait Post
         }
 
         foreach ($keys as $key) {
-
             $val = filter_input(INPUT_POST, $key);
             if (empty($val)) {
                 return false;

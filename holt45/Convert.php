@@ -52,7 +52,9 @@ trait Convert
             } elseif ($strlenHex < 6) {
                 $hexArray = array("$hex[0]$hex[0]", "$hex[1]$hex[1]", "$hex[2]$hex[2]");
             }
-            return array(hexdec($hexArray[0]), hexdec($hexArray[1]), hexdec($hexArray[2]));
+            if (isset($hexArray)) {
+                return array(hexdec($hexArray[0]), hexdec($hexArray[1]), hexdec($hexArray[2]));
+            }
         }
 
         return null;

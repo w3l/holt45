@@ -230,7 +230,6 @@ trait Strings
         $inputKey = mb_strtolower($inputKey);
         
         if ($inputOperatingSystem == "auto") {
-            
             $inputOperatingSystem = "default";
             
             $getClientOS = self::getClientOperatingSystem();
@@ -287,7 +286,6 @@ trait Strings
         );
         
         if (array_key_exists($inputKey, $arrayKeySymbols)) {
-            
             return ((array_key_exists($inputOperatingSystem, $arrayKeySymbols[$inputKey])) ?
                                       $arrayKeySymbols[$inputKey][$inputOperatingSystem] :
                                       $arrayKeySymbols[$inputKey]["default"]);
@@ -318,7 +316,6 @@ trait Strings
         $returnArray = array();
 
         foreach ($inputArrayKeys as $key) {
-            
             $kbdSymbol = self::kbdSymbol($key, $inputOperatingSystem);
             
             $kbdSymbolHtml = "";
@@ -328,7 +325,6 @@ trait Strings
             }
             
             $returnArray[] = '<kbd class="'.$inputKbdClass.'">'.$kbdSymbolHtml.$key.'</kbd>';
-            
         }
 
         return implode($inputJoinGlue, $returnArray);
@@ -355,13 +351,18 @@ trait Strings
             $minPageWidthPx = $countText;
         }
         if (($countText * $fontWidth) > $minPageWidthPx) {
-
             $cssNewFontSizePx = round(($minPageWidthPx / $countText) * 2, 2);
             $cssNewFontSizeVw = round((100/$countText) * 2, 2);
 
             $cssBreakpointPx = round($countText * $fontWidth);
-
-            return '<style scoped>@media (max-width: '.$cssBreakpointPx.'px) { '.$cssSelector.' { font-size: '.$cssNewFontSizePx.'px; font-size: '.$cssNewFontSizeVw.'vw; } }</style>';
+                    
+            return '<style scoped>'.PHP_EOL.
+                    '@media (max-width: '.$cssBreakpointPx.'px) {'.PHP_EOL.
+                    $cssSelector.' {'.PHP_EOL.
+                    'font-size: '.$cssNewFontSizePx.'px; font-size: '.$cssNewFontSizeVw.'vw;'.PHP_EOL.
+                    '}'.PHP_EOL.
+                    '}'.PHP_EOL.
+                    '</style>';
         }
         return null;
     }

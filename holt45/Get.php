@@ -60,7 +60,6 @@ trait Get
         }
 
         foreach ($keys as $key) {
-
             $val = filter_input(INPUT_GET, $key);
             if (empty($val)) {
                 return false;
