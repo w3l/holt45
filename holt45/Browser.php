@@ -79,26 +79,25 @@ trait Browser
                 preg_match('/Trident/i', $userAgent)
                 ) &&
                 !preg_match('/Opera/i', $userAgent)) {
-                return 'Internet Explorer';
+                return 'msie';
             } elseif (preg_match('/Camino/i', $userAgent)) {
-                return "Camino";
+                return "camino";
             } elseif (preg_match('/Firefox/i', $userAgent)) {
-                return "Firefox";
+                return "firefox";
             } elseif (preg_match('/Safari/i', $userAgent)) {
-                return "Safari";
+                return "safari";
             } elseif (preg_match('/Chrome/i', $userAgent)) {
-                return "Chrome";
+                return "chrome";
             } elseif (preg_match('/Konqueror/i', $userAgent)) {
-                return "Konqueror";
+                return "konqueror";
             } elseif (preg_match('/Opera/i', $userAgent)) {
-                return "Opera";
+                return "opera";
             }
         }
         
         return null;
     }
-    
-    
+
     /**
      * Check if browser is Google Chrome and not one of the browsers derived from Google Chrome.
      *
@@ -118,5 +117,55 @@ trait Browser
             }
         }
         return false;
+    }
+    
+    /**
+     * Get access key modifiers
+     *
+     * NOTICE: HTTP_USER_AGENT is easily spoofed. Don't trust this data.
+     *
+     * @link https://en.wikipedia.org/wiki/Access_key Source
+     *
+     * @param string|null $accessKey
+     * @param string $getClientBrowser
+     * @param string $getClientOperatingSystem
+     * @return array|null
+     */
+    public static function getBrowserAccessKeyModifiers(
+        $accessKey = null,
+        $getClientBrowser = "auto",
+        $getClientOperatingSystem = "auto"
+    ) {
+        if ($getClientBrowser == "auto") {
+            $getClientBrowser = self::getClientBrowser();
+        }
+        
+        if ($getClientOperatingSystem == "auto") {
+            $getClientOperatingSystem = self::getClientOperatingSystem();
+        }
+        
+        $accessKeyModifiers = array(
+            "windows" => array(
+                "firefox" => array("Alt", "Shift"),
+                "chrome" => array("Alt"),
+                "msie" => array("Alt")
+            ),
+            "mac" => array(
+                "safari" => array("Ctrl", "Opt"),
+                "chrome" => array("Ctrl", "Opt"),
+                "firefox" => array("Ctrl", "Opt"),
+                "camino" => array("Ctrl")
+            ),
+            "linux" => array(
+                "konqueror" => array("Ctrl"),
+                "firefox" => array("Alt", "Shift"),
+                "chrome" => array("Alt")
+            )
+        );
+        
+        if ($keys = $accessKeyModifiers[$getClientOperatingSystem][$getClientBrowser]) {
+            return array_merge($keys, (array)$accessKey);
+        }
+        return null;
     }
 }
