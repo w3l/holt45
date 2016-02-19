@@ -5,7 +5,7 @@
 namespace w3l\Holt45;
 
 /**
- * Check and assign from superglobal $_POST
+ * Check/assign from superglobal $_POST
  */
 trait Post
 {
@@ -56,7 +56,7 @@ trait Post
     {
         // If first value is array, then create array from first value
         if ((array)$keys[0] === $keys[0]) {
-           $keys = $keys[0];
+            $keys = $keys[0];
         }
 
         foreach ($keys as $key) {

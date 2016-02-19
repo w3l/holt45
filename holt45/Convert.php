@@ -19,7 +19,7 @@ trait Convert
     {
         // If first value is array, then create array from first value
         if ((array)$rgb[0] === $rgb[0]) {
-           $rgb = $rgb[0];
+            $rgb = $rgb[0];
         }
         
         $hex = "";

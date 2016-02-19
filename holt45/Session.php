@@ -33,10 +33,8 @@ trait Session
             $expires = current(explode("-", $_SESSION[$name]));
             if (ctype_digit($expires) && $expires > time()) {
                 return true;
-            } else {
-                unset($_SESSION[$name]);
-                return false;
             }
+            unset($_SESSION[$name]);
         }
         return false;
     }
