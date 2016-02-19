@@ -5,7 +5,7 @@
 namespace w3l\Holt45;
 
 /**
- * Check and assign from superglobal $_POST
+ * Check/assign from superglobal $_POST
  */
 trait Post
 {
@@ -42,7 +42,7 @@ trait Post
     }
 
     /**
-     * Check multiple $_POST-keys
+     * Check if multiple $_POST-keys are not empty
      *
      * Example:
      * ```php
@@ -52,17 +52,19 @@ trait Post
      * @param array $keys Post-keys.
      * @return bool
      */
-    public static function chkPostAll($keys)
+    public static function chkPostAll(...$keys)
     {
-        $keysSet = true;
+        // If first value is array, then create array from first value
+        if ((array)$keys[0] === $keys[0]) {
+            $keys = $keys[0];
+        }
 
         foreach ($keys as $key) {
-
             $val = filter_input(INPUT_POST, $key);
             if (empty($val)) {
-                $keysSet = false;
+                return false;
             }
         }
-        return $keysSet;
+        return true;
     }
 }

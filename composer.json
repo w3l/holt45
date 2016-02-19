@@ -1,7 +1,7 @@
 {
     "name": "w3l/holt45",
     "description": "A library with a mix of functions...",
-    "license": "Unlicense",
+    "license": ["Unlicense", "CC0-1.0"],
     "keywords": [
         "noob",
         "time",
@@ -12,11 +12,12 @@
     "homepage": "http://holt45.pw/",
     "support": {
         "issues": "https://github.com/w3l/holt45/issues",
-        "docs": "http://holt45.pw/docs/"
+        "docs": "http://holt45.pw/docs/",
+        "source": "https://github.com/w3l/holt45"
     },
     "type": "library",
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.6.0"
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "*"

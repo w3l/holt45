@@ -15,8 +15,13 @@ trait Convert
      * @param array $rgb RGB color
      * @return string Hexadecimal color
      */
-    public static function rgbhex($rgb)
+    public static function rgbhex(...$rgb)
     {
+        // If first value is array, then create array from first value
+        if ((array)$rgb[0] === $rgb[0]) {
+            $rgb = $rgb[0];
+        }
+        
         $hex = "";
         foreach ($rgb as $color) {
             $hex .= str_pad(dechex($color), 2, "0", STR_PAD_LEFT);
@@ -47,7 +52,9 @@ trait Convert
             } elseif ($strlenHex < 6) {
                 $hexArray = array("$hex[0]$hex[0]", "$hex[1]$hex[1]", "$hex[2]$hex[2]");
             }
-            return array(hexdec($hexArray[0]), hexdec($hexArray[1]), hexdec($hexArray[2]));
+            if (isset($hexArray)) {
+                return array(hexdec($hexArray[0]), hexdec($hexArray[1]), hexdec($hexArray[2]));
+            }
         }
 
         return null;

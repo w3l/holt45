@@ -64,6 +64,8 @@ trait Browser
      *
      * NOTICE: HTTP_USER_AGENT is easily spoofed. Don't trust this data.
      *
+     * @deprecated 0.6 Need total rewrite with decent patterns.
+     *
      * @return null|string User browser(Internet Explorer|Camino|Firefox|Safari|Chrome|Konqueror|Opera)
      */
     public static function getClientBrowser()

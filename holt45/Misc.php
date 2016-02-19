@@ -141,7 +141,6 @@ trait Misc
         $suggestedPassword = "";
 
         while ($counter < 10) {
-
             $suggestedPassword = "";
 
             for ($i = 0; $i < $length; $i++) {
