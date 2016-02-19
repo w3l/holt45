@@ -42,7 +42,7 @@ trait Get
     }
 
     /**
-     * Check multiple $_GET-keys
+     * Check if multiple $_GET-keys are not empty
      *
      * Example:
      * ```php
@@ -52,17 +52,20 @@ trait Get
      * @param array $keys Get-keys.
      * @return bool
      */
-    public static function chkGetAll($keys)
+    public static function chkGetAll(...$keys)
     {
-        $keysSet = true;
+        // If first value is array, then create array from first value
+        if ((array)$keys[0] === $keys[0]) {
+           $keys = $keys[0];
+        }
 
         foreach ($keys as $key) {
 
             $val = filter_input(INPUT_GET, $key);
             if (empty($val)) {
-                $keysSet = false;
+                return false;
             }
         }
-        return $keysSet;
+        return true;
     }
 }
