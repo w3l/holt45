@@ -44,8 +44,7 @@ trait Browser
      */
     public static function getClientOperatingSystem()
     {
-        if (getenv('HTTP_USER_AGENT')) {
-            $userAgent = getenv('HTTP_USER_AGENT');
+        if ($userAgent = getenv('HTTP_USER_AGENT')) {
 
             if (preg_match('/linux/i', $userAgent)) {
                 return 'linux';
@@ -70,9 +69,7 @@ trait Browser
      */
     public static function getClientBrowser()
     {
-        if (getenv('HTTP_USER_AGENT')) {
-            
-            $userAgent = getenv('HTTP_USER_AGENT');
+        if ($userAgent = getenv('HTTP_USER_AGENT')) {
             
             if ((
                 preg_match('/MSIE/i', $userAgent) ||
@@ -107,9 +104,7 @@ trait Browser
      */
     public static function isClientBrowserGoogleChrome()
     {
-        if (getenv('HTTP_USER_AGENT')) {
-            
-            $userAgent = getenv('HTTP_USER_AGENT');
+        if ($userAgent = getenv('HTTP_USER_AGENT')) {
             
             if (preg_match('/(Chrome|CriOS)\//i', $userAgent) &&
                 !preg_match('/(Aviator|brave|ChromePlus|coc_|Dragon|Edge|Flock|Iron|Kinza|Maxthon|MxNitro|Nichrome|OPR|Perk|Rockmelt|Seznam|Sleipnir|Spark|UBrowser|Vivaldi|WebExplorer|YaBrowser)/i', $userAgent)) {
