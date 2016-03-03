@@ -63,32 +63,21 @@ trait Browser
      *
      * NOTICE: HTTP_USER_AGENT is easily spoofed. Don't trust this data.
      *
-     * @deprecated 0.6 Need total rewrite with decent patterns.
-     *
-     * @return null|string User browser(Internet Explorer|Camino|Firefox|Safari|Chrome|Konqueror|Opera)
+     * @return null|string User browser
      */
     public static function getClientBrowser()
     {
         if ($userAgent = getenv('HTTP_USER_AGENT')) {
             
-            if ((
-                preg_match('/MSIE/i', $userAgent) ||
-                preg_match('/Trident/i', $userAgent)
-                ) &&
-                !preg_match('/Opera/i', $userAgent)) {
+            if (preg_match('/(MSIE|Trident)/i', $userAgent)) {
                 return 'msie';
-            } elseif (preg_match('/Camino/i', $userAgent)) {
-                return "camino";
-            } elseif (preg_match('/Firefox/i', $userAgent)) {
-                return "firefox";
-            } elseif (preg_match('/Safari/i', $userAgent)) {
-                return "safari";
-            } elseif (preg_match('/Chrome/i', $userAgent)) {
-                return "chrome";
-            } elseif (preg_match('/Konqueror/i', $userAgent)) {
-                return "konqueror";
-            } elseif (preg_match('/Opera/i', $userAgent)) {
-                return "opera";
+            } elseif (preg_match('/^((?!Mozilla).*?)\//i', $userAgent, $match)) {
+                return mb_strtolower($match[1]);
+            } elseif (preg_match('/(Chrome)/i', $userAgent) &&
+                      preg_match('/(Safari)/i', $userAgent)) {
+                return 'chrome';
+            } elseif (preg_match('/([^\s]+)$/i', $userAgent, $match)) {
+                return mb_strtolower(current(explode("/", $match[1])));
             }
         }
         
