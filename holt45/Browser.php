@@ -67,8 +67,7 @@ trait Browser
      */
     public static function getClientBrowser()
     {
-        if ($userAgent = getenv('HTTP_USER_AGENT')) {
-            
+        if ($userAgent = getenv('HTTP_USER_AGENT')) {            
             if (preg_match('/(MSIE|Trident)/i', $userAgent)) {
                 return 'msie';
             } elseif (preg_match('/^((?!Mozilla).*?)\//i', $userAgent, $match)) {

@@ -185,7 +185,6 @@ trait Strings
         if ($strlenText > 7) {
             while (count($colorsBuild) < $strlenText) {
                 for ($i = 0, $size = count($colorsBase); $i < $size; $i++) {
-
                     $colorsBuild[] = $colorsBase[$i];
 
                     if (count($colorsBuild) >= $strlenText) {
@@ -193,7 +192,6 @@ trait Strings
                     }
 
                     if ($i < count($colorsBase)-1) {
-
                         $colorsBuild[] = self::colorBlend($colorsBase[$i], $colorsBase[$i+1]);
 
                         if (count($colorsBuild) >= $strlenText) {
