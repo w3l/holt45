@@ -110,22 +110,24 @@ trait Browser
      *
      * @link https://en.wikipedia.org/wiki/Access_key Source
      *
+     * @used-by: Holt45::kbdSymbol()
+     *
      * @param string|null $accessKey
      * @param string $getClientBrowser
-     * @param string $getClientOperatingSystem
+     * @param string $getClientOS
      * @return array|null
      */
     public static function getBrowserAccessKeyModifiers(
         $accessKey = null,
         $getClientBrowser = "auto",
-        $getClientOperatingSystem = "auto"
+        $getClientOS = "auto"
     ) {
         if ($getClientBrowser == "auto") {
             $getClientBrowser = self::getClientBrowser();
         }
         
-        if ($getClientOperatingSystem == "auto") {
-            $getClientOperatingSystem = self::getClientOperatingSystem();
+        if ($getClientOS == "auto") {
+            $getClientOS = self::getClientOperatingSystem();
         }
         
         $accessKeyModifiers = array(
@@ -147,7 +149,7 @@ trait Browser
             )
         );
         
-        if ($keys = $accessKeyModifiers[$getClientOperatingSystem][$getClientBrowser]) {
+        if ($keys = $accessKeyModifiers[$getClientOS][$getClientBrowser]) {
             return array_merge($keys, (array)$accessKey);
         }
         return null;
