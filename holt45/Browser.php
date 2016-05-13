@@ -59,6 +59,28 @@ trait Browser
     }
 
     /**
+     * Convert UA to browser name
+     *
+     * @param Useragent-string
+     * return null|string Browser name
+     */
+    public static function getBrowserNameFromUA($userAgent)
+    {
+        if (preg_match('/(MSIE|Trident)/i', $userAgent)) {
+            return 'msie';
+        } elseif (preg_match('/^((?!Mozilla).*?)\//i', $userAgent, $match)) {
+            return mb_strtolower($match[1]);
+        } elseif (preg_match('/(Chrome)/i', $userAgent) &&
+                  preg_match('/(Safari)/i', $userAgent)) {
+            return 'chrome';
+        } elseif (preg_match('/([^\s]+)$/i', $userAgent, $match)) {
+            return mb_strtolower(current(explode("/", $match[1])));
+        }
+        
+        return null;
+    }
+    
+    /**
      * Get client browser
      *
      * NOTICE: HTTP_USER_AGENT is easily spoofed. Don't trust this data.
@@ -67,19 +89,9 @@ trait Browser
      */
     public static function getClientBrowser()
     {
-        if ($userAgent = getenv('HTTP_USER_AGENT')) {            
-            if (preg_match('/(MSIE|Trident)/i', $userAgent)) {
-                return 'msie';
-            } elseif (preg_match('/^((?!Mozilla).*?)\//i', $userAgent, $match)) {
-                return mb_strtolower($match[1]);
-            } elseif (preg_match('/(Chrome)/i', $userAgent) &&
-                      preg_match('/(Safari)/i', $userAgent)) {
-                return 'chrome';
-            } elseif (preg_match('/([^\s]+)$/i', $userAgent, $match)) {
-                return mb_strtolower(current(explode("/", $match[1])));
-            }
+        if ($userAgent = getenv('HTTP_USER_AGENT')) {
+            return self::getBrowserNameFromUA($userAgent);            
         }
-        
         return null;
     }
 

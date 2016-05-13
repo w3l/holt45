@@ -36,3 +36,4 @@ EOD;
  * Constants loaded outside class.
  */
 defined('DATE_DATETIME') || define('DATE_DATETIME', 'Y-m-d H:i:s');
+defined('HEADER_418') || define('HEADER_418', "HTTP/1.1 418 I'm a teapot");

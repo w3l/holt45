@@ -58,6 +58,7 @@ Generated API documentation is found [here](http://holt45.pw/docs)
 * Browser
   * getClientIpAddress()
   * getClientOperatingSystem()
+  * getBrowserNameFromUA()
   * getClientBrowser()
   * isClientBrowserGoogleChrome()
   * getBrowserAccessKeyModifiers()
