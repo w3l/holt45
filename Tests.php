@@ -56,12 +56,14 @@ class Tests extends \Holt45
         
         echo self::getClientBrowser(); // Firefox
         
+        echo self::getBrowserNameFromUA("Mozilla/5.0 (Windows NT 10.0; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0"); // Firefox
+        
         if (self::isClientBrowserGoogleChrome()) {
             echo 'Looks like Google Chrome';
         }
         
         if ($results = self::getBrowserAccessKeyModifiers("1")) {
-            $results[0]; // array([0] => "Alt", [1] => "Shift", [2] => "1");
+            echo $results[0]; // Array([0] => "Alt", [1] => "Shift", [2] => "1");
         }
         
         /* Convert */
@@ -122,5 +124,7 @@ class Tests extends \Holt45
         
         /* global constants */
         echo date(DATE_DATETIME);
+        
+        echo HEADER_418; // eg header(HEADER_418);
     }
 }

@@ -17,12 +17,12 @@ trait Post
      * if(chkPost("s") == "a") instead of if(isset($_POST["s"]) && $_POST["s"] == "a")
      * ```
      *
-     * @param string $key Post-key.
+     * @param string $postKey Post-key.
      * @return bool|string
      */
-    public static function chkPost($key)
+    public static function chkPost($postKey)
     {
-        return filter_input(INPUT_POST, $key);
+        return filter_input(INPUT_POST, $postKey);
     }
 
     /**
@@ -33,12 +33,12 @@ trait Post
      * $var = assignFromPost("a") instead of $var = ((!empty($_POST["s"])) ? $_POST["s"] : "");
      * ```
      *
-     * @param string $key Post-key.
+     * @param string $postKey Post-key.
      * @return string
      */
-    public static function assignFromPost($key)
+    public static function assignFromPost($postKey)
     {
-        return (string)filter_input(INPUT_POST, $key);
+        return (string)filter_input(INPUT_POST, $postKey);
     }
 
     /**

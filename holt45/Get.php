@@ -17,12 +17,12 @@ trait Get
      * if(chkGet("s") == "a") instead of if(isset($_GET["s"]) && $_GET["s"] == "a")
      * ```
      *
-     * @param string $key Get-key.
+     * @param string $getKey Get-key.
      * @return bool|string
      */
-    public static function chkGet($key)
+    public static function chkGet($getKey)
     {
-        return filter_input(INPUT_GET, $key);
+        return filter_input(INPUT_GET, $getKey);
     }
 
     /**
@@ -33,12 +33,12 @@ trait Get
      * $var = assignFromGet("a") instead of $var = ((!empty($_GET["s"])) ? $_GET["s"] : "");
      * ```
      *
-     * @param string $key Get-key.
+     * @param string $getKey Get-key.
      * @return string
      */
-    public static function assignFromGet($key)
+    public static function assignFromGet($getKey)
     {
-        return (string)filter_input(INPUT_GET, $key);
+        return (string)filter_input(INPUT_GET, $getKey);
     }
 
     /**

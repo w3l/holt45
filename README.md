@@ -58,8 +58,10 @@ Generated API documentation is found [here](http://holt45.pw/docs)
 * Browser
   * getClientIpAddress()
   * getClientOperatingSystem()
+  * getBrowserNameFromUA()
   * getClientBrowser()
   * isClientBrowserGoogleChrome()
+  * getBrowserAccessKeyModifiers()
 * Convert
   * rgbhex()
   * hexrgb()
@@ -126,7 +128,11 @@ echo holt45::getClientIpAddress(); // 127.0.0.1
 echo holt45::getClientOperatingSystem(); // linux
 
 echo holt45::getClientBrowser(); // Firefox
-        
+
+if ($results = holt45::getBrowserAccessKeyModifiers("1")) {
+    $results[0]; // Array([0] => "Alt", [1] => "Shift", [2] => "1");
+}
+
 /* Convert */
 echo holt45::rgbhex(array(255, 0, 0)); // ff0000
 

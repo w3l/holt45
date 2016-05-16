@@ -59,6 +59,28 @@ trait Browser
     }
 
     /**
+     * Convert UA to browser name
+     *
+     * @param Useragent-string
+     * return null|string Browser name
+     */
+    public static function getBrowserNameFromUA($userAgent)
+    {
+        if (preg_match('/(MSIE|Trident)/i', $userAgent)) {
+            return 'msie';
+        } elseif (preg_match('/^((?!Mozilla).*?)\//i', $userAgent, $match)) {
+            return mb_strtolower($match[1]);
+        } elseif (preg_match('/(Chrome)/i', $userAgent) &&
+                  preg_match('/(Safari)/i', $userAgent)) {
+            return 'chrome';
+        } elseif (preg_match('/([^\s]+)$/i', $userAgent, $match)) {
+            return mb_strtolower(current(explode("/", $match[1])));
+        }
+        
+        return null;
+    }
+    
+    /**
      * Get client browser
      *
      * NOTICE: HTTP_USER_AGENT is easily spoofed. Don't trust this data.
@@ -68,19 +90,8 @@ trait Browser
     public static function getClientBrowser()
     {
         if ($userAgent = getenv('HTTP_USER_AGENT')) {
-            
-            if (preg_match('/(MSIE|Trident)/i', $userAgent)) {
-                return 'msie';
-            } elseif (preg_match('/^((?!Mozilla).*?)\//i', $userAgent, $match)) {
-                return mb_strtolower($match[1]);
-            } elseif (preg_match('/(Chrome)/i', $userAgent) &&
-                      preg_match('/(Safari)/i', $userAgent)) {
-                return 'chrome';
-            } elseif (preg_match('/([^\s]+)$/i', $userAgent, $match)) {
-                return mb_strtolower(current(explode("/", $match[1])));
-            }
+            return self::getBrowserNameFromUA($userAgent);            
         }
-        
         return null;
     }
 
@@ -110,22 +121,24 @@ trait Browser
      *
      * @link https://en.wikipedia.org/wiki/Access_key Source
      *
+     * @used-by: Holt45::kbdSymbol()
+     *
      * @param string|null $accessKey
      * @param string $getClientBrowser
-     * @param string $getClientOperatingSystem
+     * @param string $getClientOS
      * @return array|null
      */
     public static function getBrowserAccessKeyModifiers(
         $accessKey = null,
         $getClientBrowser = "auto",
-        $getClientOperatingSystem = "auto"
+        $getClientOS = "auto"
     ) {
         if ($getClientBrowser == "auto") {
             $getClientBrowser = self::getClientBrowser();
         }
         
-        if ($getClientOperatingSystem == "auto") {
-            $getClientOperatingSystem = self::getClientOperatingSystem();
+        if ($getClientOS == "auto") {
+            $getClientOS = self::getClientOperatingSystem();
         }
         
         $accessKeyModifiers = array(
@@ -147,7 +160,7 @@ trait Browser
             )
         );
         
-        if ($keys = $accessKeyModifiers[$getClientOperatingSystem][$getClientBrowser]) {
+        if ($keys = $accessKeyModifiers[$getClientOS][$getClientBrowser]) {
             return array_merge($keys, (array)$accessKey);
         }
         return null;
