@@ -124,5 +124,7 @@ class Tests extends \Holt45
         
         /* global constants */
         echo date(DATE_DATETIME);
+        
+        echo HEADER_418; // eg header(HEADER_418);
     }
 }
