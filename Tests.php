@@ -63,7 +63,7 @@ class Tests extends \Holt45
         }
         
         if ($results = self::getBrowserAccessKeyModifiers("1")) {
-            echo $results[0]; // Array([0] => "Alt", [1] => "Shift", [2] => "1");
+            echo $results[0]; // Array([0] => "Alt", [1] => "Shift", [2] => "1")
         }
         
         /* Convert */
