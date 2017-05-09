@@ -124,7 +124,20 @@ trait Misc
 
         return $urlArray;
     }
-
+    
+    /**
+     * To allow shorthand-requests for <Pre>, Print_R and Exit.
+     *
+     * @param array input array
+     */
+    public static function ppre($array)
+    {
+        echo '<pre>';
+        print_r($array);
+        echo '</pre>';
+        EXIT;
+    }
+    
     /**
     * Generate a password-suggestion.
     *
