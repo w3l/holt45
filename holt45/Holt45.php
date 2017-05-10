@@ -43,6 +43,6 @@ defined('HEADER_418') || define('HEADER_418', "HTTP/1.1 418 I'm a teapot");
  */
 if (!function_exists('ppre')) {
     function ppre($a) {
-        holt45::prePrintRExit($a);
+        holt45::ppre($a);
     }
 }
