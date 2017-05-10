@@ -33,7 +33,16 @@ EOD;
 }
 
 /**
- * Constants loaded outside class.
+ * Constants loaded outside of class.
  */
 defined('DATE_DATETIME') || define('DATE_DATETIME', 'Y-m-d H:i:s');
 defined('HEADER_418') || define('HEADER_418', "HTTP/1.1 418 I'm a teapot");
+
+/**
+ * Function loaded outside of class.
+ */
+if (!function_exists('ppre')) {
+    function ppre($a) {
+        holt45::prePrintRExit($a);
+    }
+}

@@ -10,6 +10,8 @@
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/43b42ce6-800c-42c8-8562-06ed841d8272.svg?label=SensioLabs)](https://insight.sensiolabs.com/projects/43b42ce6-800c-42c8-8562-06ed841d8272)
 [![Code Climate](https://img.shields.io/codeclimate/github/w3l/holt45.svg)](https://codeclimate.com/github/w3l/holt45)
 [![Codacy Badge](https://img.shields.io/codacy/a3955affc5dc4e57b48ae2a6a8eb5b2f.svg?label=codacy)](https://www.codacy.com/app/support_7/holt45)
+[![BCH compliance](https://bettercodehub.com/edge/badge/w3l/holt45?branch=master)](https://bettercodehub.com/)
+[![CodeFactor](https://www.codefactor.io/repository/github/w3l/holt45/badge)](https://www.codefactor.io/repository/github/w3l/holt45)
 
 
 ## Class Features
@@ -85,11 +87,13 @@ Generated API documentation is found [here](http://holt45.pw/docs)
   * urlParser()
   * generatePassword()
   * iso3166ToName()
+  * ppre()
 * constants
   * DATA_URI_TRANSPARENT_GIF
   * DATA_URI_TRANSPARENT_PNG
 * constants(global)
   * DATE_DATETIME
+  * HEADER_418
 
 ### Example code:
 ```php
