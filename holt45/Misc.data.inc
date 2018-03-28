@@ -12,7 +12,7 @@ trait MiscData
     /**
      * List of 3166-1 alpha-2 codes
      *
-     * @link https://gist.github.com/IngmarBoddington/5909709 Source
+     * @link https://gist.github.com/w3l/19af09a49f5a56b252ebc12cf6ee7ed2 Source
      *
      * @used-by Holt45::iso3166ToName()
      *
@@ -35,6 +35,7 @@ trait MiscData
         'AW' => 'ARUBA',
         'AU' => 'AUSTRALIA',
         'AT' => 'AUSTRIA',
+        'AX' => 'ÅLAND ISLANDS',
         'AZ' => 'AZERBAIJAN',
         'BS' => 'BAHAMAS',
         'BH' => 'BAHRAIN',
@@ -77,7 +78,7 @@ trait MiscData
         'CI' => 'COTE DIVOIRE',
         'HR' => 'CROATIA',
         'CU' => 'CUBA',
-        'CW' => 'CURACAO',
+        'CW' => 'CURAÇAO',
         'CY' => 'CYPRUS',
         'CZ' => 'CZECH REPUBLIC',
         'DK' => 'DENMARK',
@@ -200,11 +201,11 @@ trait MiscData
         'PT' => 'PORTUGAL',
         'PR' => 'PUERTO RICO',
         'QA' => 'QATAR',
-        'RE' => 'REUNION',
+        'RE' => 'RÉUNION',
         'RO' => 'ROMANIA',
         'RU' => 'RUSSIAN FEDERATION',
         'RW' => 'RWANDA',
-        'BL' => 'SAINT BARTHv�LEMY',
+        'BL' => 'SAINT BARTHÉLEMY',
         'SH' => 'SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA',
         'KN' => 'SAINT KITTS AND NEVIS',
         'LC' => 'SAINT LUCIA',
