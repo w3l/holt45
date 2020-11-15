@@ -42,7 +42,11 @@ trait Time
         "en" => array("s" => ["second", "seconds"],
                       "m" => ["minute", "minutes"],
                       "h" => ["hour", "hours"],
-                      "d" => ["day", "days"])
+                      "d" => ["day", "days"]),
+        "af" => array("s" => ["sekonde", "sekondes"],
+                      "m" => ["minuut", "minute"],
+                      "h" => ["uur", "ure"],
+                      "d" => ["dag", "dae"])
         );
         
         $seconds = max((time() - strtotime($timestamp)), 0);
