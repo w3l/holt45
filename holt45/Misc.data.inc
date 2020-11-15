@@ -18,7 +18,7 @@ trait MiscData
      *
      * @return array
      */
-    private static function getCountriesList()
+    public static function getCountriesList()
     {
         return array(
         'AF' => 'AFGHANISTAN',
