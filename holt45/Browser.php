@@ -144,6 +144,7 @@ trait Browser
         $accessKeyModifiers = array(
             "windows" => array(
                 "firefox" => array("Alt", "Shift"),
+                "palemoon" => array("Alt", "Shift"),
                 "chrome" => array("Alt"),
                 "msie" => array("Alt")
             ),
