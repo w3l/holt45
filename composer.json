@@ -7,7 +7,7 @@
         "time",
         "session",
         "url",
-		"password"
+        "password"
     ],
     "homepage": "http://holt45.pw/",
     "support": {
@@ -17,7 +17,7 @@
     },
     "type": "library",
     "require": {
-        "php": ">=5.6.0"
+        "php": ">=7.0"
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "*"

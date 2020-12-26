@@ -161,7 +161,7 @@ trait Browser
             )
         );
         
-        if ($keys = $accessKeyModifiers[$getClientOS][$getClientBrowser]) {
+        if ($keys = $accessKeyModifiers[$getClientOS][$getClientBrowser]  ?? false) {
             return array_merge($keys, (array)$accessKey);
         }
         return null;
