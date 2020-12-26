@@ -30,9 +30,10 @@ trait Time
      *
      * @param string $timestamp
      * @param string $lang Language
+     * @param bool $countdown True for countdown
      * @return string Formated time: "x unit(s)" or empty string
      */
-    public static function timeElapsed($timestamp, $lang = "en")
+    public static function timeElapsed($timestamp, $lang = "en", $countdown = false)
     {
         $arrayLanguages = array(
         "sv" => array("s" => ["sekund", "sekunder"],
@@ -42,10 +43,18 @@ trait Time
         "en" => array("s" => ["second", "seconds"],
                       "m" => ["minute", "minutes"],
                       "h" => ["hour", "hours"],
-                      "d" => ["day", "days"])
+                      "d" => ["day", "days"]),
+        "af" => array("s" => ["sekonde", "sekondes"],
+                      "m" => ["minuut", "minute"],
+                      "h" => ["uur", "ure"],
+                      "d" => ["dag", "dae"])
         );
         
-        $seconds = max((time() - strtotime($timestamp)), 0);
+        if ($countdown == false) {
+            $seconds = max((time() - strtotime($timestamp)), 0);
+        } elseif ($countdown == true) {
+            $seconds = max((strtotime($timestamp) - time()), 0);
+        }
 
         if ($seconds < 60) {
             $number = $seconds;
